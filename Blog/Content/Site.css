@@ -63,12 +63,38 @@ footer p {
     width: 10%;
     float: right;
     position: fixed;
+    margin-left: 90px;
+}
+
+.right-sidebar ul li {
+    font-size: 24px;
+    font-weight: bold;
 }
 
 .main-body {
-    width: 80%;
+    width: 70%;
 }
 
 .content-col {
     display: inline-block;
+}
+
+.article {
+    border: 1px solid black;
+    padding: 20px;
+    border-radius: 4px;
+}
+
+.article-name {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.publish-date {
+    font-size: 12px;
+    opacity: 0.7;
+}
+
+.article-content {
+    font-size: 18px;
 }

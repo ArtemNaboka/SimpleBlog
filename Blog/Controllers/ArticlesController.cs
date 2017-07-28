@@ -1,5 +1,7 @@
-﻿using System.Threading.Tasks;
+﻿using System.Linq;
+using System.Threading.Tasks;
 using System.Net;
+using System.Text;
 using System.Web.Mvc;
 using Blog.Models;
 using Blog.Services.Interfaces;
@@ -9,7 +11,7 @@ namespace Blog.Controllers
 {
     public class ArticlesController : Controller
     {
-        private const int SymbolsForPreviewShow = 50;
+        private const int SymbolsForPreviewShow = 200;
 
         private readonly IArticlesService _articlesService;
 
@@ -30,7 +32,7 @@ namespace Blog.Controllers
             {
                 if (article.Text.Length > SymbolsForPreviewShow)
                 {
-                    article.Text = article.Text.Substring(0, SymbolsForPreviewShow) + "...";
+                    article.Text = CutToLastWord(article.Text, SymbolsForPreviewShow);
                 }
             }
 
@@ -60,7 +62,7 @@ namespace Blog.Controllers
             return View();
         }
 
-        
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Create([Bind(Include = "Id,Name,PublishDate,Text")] Article article)
@@ -89,7 +91,7 @@ namespace Blog.Controllers
             }
             return View(article);
         }
-      
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Edit([Bind(Include = "Id,Name,PublishDate,Text")] Article article)
@@ -125,5 +127,23 @@ namespace Blog.Controllers
             await _articlesService.RemoveAsync(id);
             return RedirectToAction("Index");
         }
+
+        #region Helpers
+
+        private static string CutToLastWord(string text, int substrLength)
+        {
+            var sb = new StringBuilder(text.Substring(0, substrLength));
+            char[] separators = { ' ', '.', ',', ';', '!', '?' };
+
+            for (var i = substrLength; i < text.Length && !separators.Contains(text[i]); i++)
+            {
+                sb.Append(text[i]);
+            }
+
+            sb.Append("...");
+            return sb.ToString();
+        }
+
+        #endregion
     }
 }

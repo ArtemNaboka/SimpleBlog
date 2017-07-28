@@ -8,4 +8,13 @@ namespace Blog.Contexts
         public DbSet<Article> Articles { get; set; }
         public DbSet<Comment> Comments { get; set; }
     }
+
+
+    public class BlogDbContextInitializer : DropCreateDatabaseAlways<BlogDbContext>
+    {
+        protected override void Seed(BlogDbContext dbContext)
+        {
+            
+        }
+    }
 }
