@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using System.Net;
 using System.Web.Mvc;
 using Blog.Models;
@@ -29,10 +28,13 @@ namespace Blog.Controllers
 
             foreach (var article in articlesViewModel.Articles)
             {
-                article.Text = article.Text.Substring(0, SymbolsForPreviewShow) + "...";
+                if (article.Text.Length > SymbolsForPreviewShow)
+                {
+                    article.Text = article.Text.Substring(0, SymbolsForPreviewShow) + "...";
+                }
             }
 
-            return View(await _articlesService.GetArticlesAsync());
+            return View(articlesViewModel);
         }
 
         [HttpGet]
