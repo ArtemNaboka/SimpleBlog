@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using System.Web.Mvc;
 using Blog.Services.Interfaces;
+using Blog.ViewModels;
 
 namespace Blog.Controllers
 {
@@ -21,7 +22,13 @@ namespace Blog.Controllers
                 .OrderByDescending(c => c.PublishDate)
                 .ToList();
 
-            return View(orderedComments);
+            var commentsViewModel = new CommentsListViewModel
+            {
+                Comments = orderedComments,
+                CommentsCount = orderedComments.Count
+            };
+
+            return View(commentsViewModel);
         }
 
         [HttpPost]

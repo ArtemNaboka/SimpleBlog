@@ -7,6 +7,7 @@ namespace Blog.Models
     {
         public int Id { get; set; }
 
+        [Required]
         [Display(Name = "Article Name")]
         public string Name { get; set; }
 
@@ -15,6 +16,7 @@ namespace Blog.Models
         [ScaffoldColumn(false)]
         public DateTime PublishDate { get; set; }
 
+        [Required]
         [Display(Name = "Text")]
         [DataType(DataType.MultilineText)]
         public string Text { get; set; }

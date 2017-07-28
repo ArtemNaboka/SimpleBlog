@@ -1,7 +1,5 @@
-﻿@using Blog.Controllers
-
-<ul>
-    <li>@Html.ActionLink("Main", nameof(ArticlesController.Index))</li>
-    <li><a href="#">Guest</a></li>
+﻿<ul>
+    <li>@Html.ActionLink("Main", "Index", "Articles")</li>
+    <li>@Html.ActionLink("Guest", "Index", "Comments")</li>
     <li><a href="#">Questionary</a></li>
 </ul>

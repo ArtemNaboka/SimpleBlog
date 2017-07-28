@@ -1,0 +1,18 @@
+﻿@using Blog.Models
+@model Blog.ViewModels.CommentsListViewModel
+
+<div class="wrapper">
+    <div class="form-container">
+        @Html.Partial("_CreateCommentPartial", new Comment())
+    </div>
+    <hr />
+    <p>@Model.CommentsCount comment(s)</p>
+    <div class="comments">
+        @foreach (var comment in Model.Comments)
+        {
+            @Html.Partial("_CommentPartial", comment)
+        }
+    </div>
+</div>
+
+<link href="~/Content/comments.css" rel="stylesheet" />

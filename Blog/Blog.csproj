@@ -170,6 +170,10 @@
     <Compile Include="Migrations\201707271720409_Initial.Designer.cs">
       <DependentUpon>201707271720409_Initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201707281344241_ModelChanges.cs" />
+    <Compile Include="Migrations\201707281344241_ModelChanges.Designer.cs">
+      <DependentUpon>201707281344241_ModelChanges.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Article.cs" />
     <Compile Include="Models\Comment.cs" />
@@ -186,10 +190,12 @@
     <Compile Include="Services\Interfaces\ICommentsService.cs" />
     <Compile Include="Util\NinjectDependencyResolver.cs" />
     <Compile Include="ViewModels\ArticlesListViewModel.cs" />
+    <Compile Include="ViewModels\CommentsListViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\comments.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -228,10 +234,12 @@
     <Content Include="Views\Articles\Index.cshtml" />
     <Content Include="Views\Shared\_MenuPartial.cshtml" />
     <Content Include="Views\Articles\_ArticlePartial.cshtml" />
+    <Content Include="Views\Comments\Index.cshtml" />
+    <Content Include="Views\Comments\_CommentPartial.cshtml" />
+    <Content Include="Views\Comments\_CreateCommentPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Comments\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -251,6 +259,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201707271720409_Initial.resx">
       <DependentUpon>201707271720409_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707281344241_ModelChanges.resx">
+      <DependentUpon>201707281344241_ModelChanges.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

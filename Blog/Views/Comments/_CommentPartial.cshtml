@@ -1,0 +1,11 @@
+﻿@model Blog.Models.Comment
+
+<div class="comment">
+    <div class="comment-header">
+        <p class="comment-author">@Model.AuthorName</p>
+        <p class="publish-date">@Model.PublishDate</p>
+    </div>
+    <div class="comment-content">
+        <p>@Model.Text</p>
+    </div>
+</div>

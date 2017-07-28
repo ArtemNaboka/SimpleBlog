@@ -35,7 +35,7 @@ textarea {
 }
 
 footer {
-    background-color: #cecece;
+    /*background-color: #cecece;*/
     padding: 20px 0;
     width: 100%;
     /*position: absolute;
@@ -95,6 +95,7 @@ footer p {
     opacity: 0.7;
 }
 
-.article-content {
+.article-content p {
     font-size: 18px;
+    text-align: justify;
 }
