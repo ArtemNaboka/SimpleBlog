@@ -1,12 +1,19 @@
 ﻿body {
     padding-top: 50px;
-    padding-bottom: 20px;
+    padding-bottom: 0;
+    font-family: "Arial";
+}
+
+.clearfix {
+    clear: both;
 }
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 40px;
+    margin-bottom: 20px;
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
@@ -23,11 +30,45 @@ textarea {
     max-width: 280px;
 }
 
+.navbar {
+    padding: 15px 0;
+}
+
+footer {
+    background-color: #cecece;
+    padding: 20px 0;
+    width: 100%;
+    /*position: absolute;
+    bottom: 0;
+    left: 0;*/
+}
+
 footer p {
     text-align: center;
 }
 
+.container h1 {
+    color: #fff;
+    display: inline;
+    line-height: 40px;
+    vertical-align: middle;
+}
+
 .container img {
-    width: 20px;
-    height: 20px;
+    width: 40px;
+    height: 40px;
+}
+
+.right-sidebar {
+    width: 10%;
+    float: right;
+    position: fixed;
+}
+
+.main-body {
+    width: 80%;
+}
+
+.content-col {
+    display: inline-block;
 }

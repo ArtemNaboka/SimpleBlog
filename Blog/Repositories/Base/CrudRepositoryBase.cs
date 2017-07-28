@@ -41,7 +41,7 @@ namespace Blog.Repositories.Base
 
         public async Task RemoveAsync(TEntity item)
         {
-            DbSet.Remove(item);
+            BlogDbContext.Entry(item).State = EntityState.Deleted;;
             await BlogDbContext.SaveChangesAsync();
         }
 
@@ -68,7 +68,7 @@ namespace Blog.Repositories.Base
         public async Task RemoveAsync(TKey itemId)
         {
             var item = await GetItemAsync(itemId);
-            DbSet.Remove(item);
+            await RemoveAsync(item);
             await BlogDbContext.SaveChangesAsync();
         }
 

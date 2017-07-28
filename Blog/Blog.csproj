@@ -185,6 +185,7 @@
     <Compile Include="Services\Interfaces\IArticlesService.cs" />
     <Compile Include="Services\Interfaces\ICommentsService.cs" />
     <Compile Include="Util\NinjectDependencyResolver.cs" />
+    <Compile Include="ViewModels\ArticlesListViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -228,7 +229,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="ViewModels\" />
     <Folder Include="Views\Comments\" />
   </ItemGroup>
   <ItemGroup>

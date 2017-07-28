@@ -1,13 +1,17 @@
-﻿using System.Threading.Tasks;
+﻿using System.Linq;
+using System.Threading.Tasks;
 using System.Net;
 using System.Web.Mvc;
 using Blog.Models;
 using Blog.Services.Interfaces;
+using Blog.ViewModels;
 
 namespace Blog.Controllers
 {
     public class ArticlesController : Controller
     {
+        private const int SymbolsForPreviewShow = 50;
+
         private readonly IArticlesService _articlesService;
 
         public ArticlesController(IArticlesService articlesService)
@@ -18,6 +22,16 @@ namespace Blog.Controllers
         [HttpGet]
         public async Task<ActionResult> Index()
         {
+            var articlesViewModel = new ArticlesListViewModel
+            {
+                Articles = await _articlesService.GetArticlesAsync()
+            };
+
+            foreach (var article in articlesViewModel.Articles)
+            {
+                article.Text = article.Text.Substring(0, SymbolsForPreviewShow) + "...";
+            }
+
             return View(await _articlesService.GetArticlesAsync());
         }
 
