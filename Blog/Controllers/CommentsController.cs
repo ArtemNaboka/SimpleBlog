@@ -1,6 +1,8 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Mvc;
+using Blog.Models;
 using Blog.Services.Interfaces;
 using Blog.ViewModels;
 
@@ -32,12 +34,15 @@ namespace Blog.Controllers
         }
 
         [HttpPost]
-        public ActionResult CreateComment()
+        public async Task<ActionResult> CreateComment(Comment comment)
         {
             if (!ModelState.IsValid)
             {
-                
+                return Content("Enter valid data!");
             }
+
+            comment.PublishDate = DateTime.UtcNow;
+            await _commentsService.CreateAsync(comment);
             return RedirectToAction(nameof(Index));
         }
     }

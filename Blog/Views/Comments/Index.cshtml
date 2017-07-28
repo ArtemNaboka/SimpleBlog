@@ -7,12 +7,18 @@
     </div>
     <hr />
     <p>@Model.CommentsCount comment(s)</p>
+    <hr/>
     <div class="comments">
         @foreach (var comment in Model.Comments)
         {
             @Html.Partial("_CommentPartial", comment)
+            <hr/>
         }
     </div>
 </div>
 
 <link href="~/Content/comments.css" rel="stylesheet" />
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
