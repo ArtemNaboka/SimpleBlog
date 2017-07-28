@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Net;
 using System.Text;
@@ -94,10 +95,11 @@ namespace Blog.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "Id,Name,PublishDate,Text")] Article article)
+        public async Task<ActionResult> Edit([Bind(Include = "Id,Name,Text")] Article article)
         {
             if (ModelState.IsValid)
             {
+                article.PublishDate = DateTime.UtcNow;
                 await _articlesService.UpdateAsync(article);
                 return RedirectToAction("Index");
             }
