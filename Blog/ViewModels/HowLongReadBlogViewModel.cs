@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using Blog.Infrastructure;
 
 namespace Blog.ViewModels
 {
@@ -9,6 +10,7 @@ namespace Blog.ViewModels
         [Display(Name = "How long have you been reading a blog")]
         public string Value { get; set; }
 
-        public IEnumerable<KeyValuePair<string, string>> ValuesAndLabels { get; set; }
+        public Dictionary<string, string> ValuesAndLabels { get; set; } =
+            QuestionaryCases.HowLongReadBlogValuesAndLabels;
     }
 }

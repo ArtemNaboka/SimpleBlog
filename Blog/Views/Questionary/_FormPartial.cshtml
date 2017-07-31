@@ -2,23 +2,55 @@
 
 @using (Html.BeginForm("Index", "Questionary", FormMethod.Post))
 {
-    @Html.EditorFor(m => m.City)
-    <br />
-    @*foreach (var ageRangeValue in Model.AgeRange.Values)
-    {
-        @Html.RadioButtonFor(m => m.AgeRange.AgeRange, ageRangeValue)
-        @Html.LabelFor(m => m, ageRangeValue)
-    }
-    @Html.LabelFor(m => m.AgeRange.AgeRange)
-    <br />*@
-    @*foreach (var pair in Model.HowLongReadBlog.ValuesAndLabels)
-    {
-        @Html.RadioButtonFor(m => m.HowLongReadBlog.Value, pair.Key)
-        @Html.LabelFor(m => m.HowLongReadBlog.Value, pair.Value)
-    }
-    <br />*@
-    @Html.EditorFor(m => m.Wishes)
-    <br />
+    @Html.AntiForgeryToken()
 
-    <input type="submit" value="Submit" />
+    <div class="form-horizontal">
+        <h4>Write your comment</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.City, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.City, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.City, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        
+        <div class="form-group">
+            @Html.LabelFor(model => model.AgeRange.Value, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @foreach (var age in Model.AgeRange.ValuesAndLabels)
+                {
+                    @Html.RadioButtonFor(model => model.AgeRange.Value, age.Key, htmlAttributes: new { id = age.Key } )
+                    <label for="@age.Key">@age.Value</label>
+                }
+            </div>
+        </div>
+        
+        <div class="form-group">
+            @Html.LabelFor(model => model.HowLongReadBlog.Value, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @foreach (var age in Model.HowLongReadBlog.ValuesAndLabels)
+                {
+                    @Html.RadioButtonFor(model => model.HowLongReadBlog.Value, age.Key, htmlAttributes: new { id = age.Key })
+                    <label for="@age.Key">@age.Value</label>
+                }
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Wishes, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Wishes, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Wishes, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Submit" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
 }

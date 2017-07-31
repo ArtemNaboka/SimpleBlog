@@ -17,6 +17,7 @@ namespace Blog.Services
 
         public async Task AddAsync(Questionary questionary)
         {
+            questionary.AnsweredCount = 1;
             await _questionariesRepository.AddAsync(questionary);
         }
 
