@@ -191,14 +191,19 @@
     <Compile Include="Repositories\Interfaces\IArticlesRepository.cs" />
     <Compile Include="Repositories\Interfaces\ICommentsRepository.cs" />
     <Compile Include="Repositories\Interfaces\ICrudRepository.cs" />
+    <Compile Include="Repositories\Interfaces\IQuestionariesRepository.cs" />
+    <Compile Include="Repositories\QuestionariesRepository.cs" />
     <Compile Include="Services\ArticlesService.cs" />
     <Compile Include="Services\CommentsService.cs" />
     <Compile Include="Services\Interfaces\IArticlesService.cs" />
     <Compile Include="Services\Interfaces\ICommentsService.cs" />
+    <Compile Include="Services\Interfaces\IQuestionariesService.cs" />
+    <Compile Include="Services\QuestionariesService.cs" />
     <Compile Include="Util\NinjectDependencyResolver.cs" />
     <Compile Include="ViewModels\ArticlesListViewModel.cs" />
     <Compile Include="ViewModels\CommentsListViewModel.cs" />
     <Compile Include="ViewModels\FillingQuestionaryViewModel.cs" />
+    <Compile Include="ViewModels\QuestionaryViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />

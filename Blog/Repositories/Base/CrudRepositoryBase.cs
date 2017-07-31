@@ -22,30 +22,30 @@ namespace Blog.Repositories.Base
         public BlogDbContext BlogDbContext { get; }
         public virtual IQueryable<TEntity> NotCachedQueryable => DbSet.AsNoTracking();
 
-        public async Task<IEnumerable<TEntity>> GetItemsAsync()
+        public virtual async Task<IEnumerable<TEntity>> GetItemsAsync()
         {
             return await NotCachedQueryable.ToListAsync();
         }
 
-        public async Task AddAsync(TEntity item)
+        public virtual async Task AddAsync(TEntity item)
         {
             DbSet.Add(item);
             await BlogDbContext.SaveChangesAsync();
         }
 
-        public async Task UpdateAsync(TEntity item)
+        public virtual async Task UpdateAsync(TEntity item)
         {
             BlogDbContext.Entry(item).State = EntityState.Modified;
             await BlogDbContext.SaveChangesAsync();
         }
 
-        public async Task RemoveAsync(TEntity item)
+        public virtual async Task RemoveAsync(TEntity item)
         {
             BlogDbContext.Entry(item).State = EntityState.Deleted;;
             await BlogDbContext.SaveChangesAsync();
         }
 
-        public async Task<IEnumerable<TEntity>> GetItemsAsync(Func<IQueryable<TEntity>, IQueryable<TEntity>> convertQuery)
+        public virtual async Task<IEnumerable<TEntity>> GetItemsAsync(Func<IQueryable<TEntity>, IQueryable<TEntity>> convertQuery)
         {
             return await convertQuery(NotCachedQueryable).ToListAsync();
         }
@@ -60,12 +60,12 @@ namespace Blog.Repositories.Base
         {
         }
 
-        public async Task<TEntity> GetItemAsync(TKey itemId)
+        public virtual async Task<TEntity> GetItemAsync(TKey itemId)
         {
             return await NotCachedQueryable.FirstOrDefaultAsync(KeyPredicate(itemId));
         }
 
-        public async Task RemoveAsync(TKey itemId)
+        public virtual async Task RemoveAsync(TKey itemId)
         {
             var item = await GetItemAsync(itemId);
             await RemoveAsync(item);

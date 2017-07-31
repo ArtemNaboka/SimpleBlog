@@ -29,8 +29,10 @@ namespace Blog.Util
         {
             _kernel.Bind<IArticlesRepository>().To<ArticlesRepository>();
             _kernel.Bind<ICommentsRepository>().To<CommentsRepository>();
+            _kernel.Bind<IQuestionariesRepository>().To<QuestionariesRepository>();
             _kernel.Bind<IArticlesService>().To<ArticlesService>();
             _kernel.Bind<ICommentsService>().To<CommentsService>();
+            _kernel.Bind<IQuestionariesService>().To<QuestionariesService>();
         }
     }
 }
