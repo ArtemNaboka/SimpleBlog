@@ -1,15 +1,10 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace Blog.Models
+﻿namespace Blog.Models
 {
     public class Questionary
     {
         public int Id { get; set; }
-
-        public string City { get; set; }
-
-        public string Wishes { get; set; }
-
-
+        public string Answer { get; set; }
+        public string QuestionType { get; set; }
+        public int AnsweredCount { get; set; }
     }
 }
