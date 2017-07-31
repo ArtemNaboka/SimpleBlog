@@ -2,7 +2,7 @@
 {
     public class QuestionaryViewModel
     {
-        public FillingQuestionaryViewModel FillingQuestionary { get; set; }
+        public FillingQuestionaryViewModel FillingQuestionary { get; set; } = new FillingQuestionaryViewModel();
         public bool UserHasFilled { get; set; }
     }
 }

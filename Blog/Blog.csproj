@@ -168,6 +168,8 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\ListHelper.cs" />
+    <Compile Include="Infrastructure\QuestionaryCases.cs" />
+    <Compile Include="Infrastructure\SimpleMapper.cs" />
     <Compile Include="Migrations\201707271720409_Initial.cs" />
     <Compile Include="Migrations\201707271720409_Initial.Designer.cs">
       <DependentUpon>201707271720409_Initial.cs</DependentUpon>
@@ -200,9 +202,11 @@
     <Compile Include="Services\Interfaces\IQuestionariesService.cs" />
     <Compile Include="Services\QuestionariesService.cs" />
     <Compile Include="Util\NinjectDependencyResolver.cs" />
+    <Compile Include="ViewModels\AgeRangeViewModel.cs" />
     <Compile Include="ViewModels\ArticlesListViewModel.cs" />
     <Compile Include="ViewModels\CommentsListViewModel.cs" />
     <Compile Include="ViewModels\FillingQuestionaryViewModel.cs" />
+    <Compile Include="ViewModels\HowLongReadBlogViewModel.cs" />
     <Compile Include="ViewModels\QuestionaryViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -251,6 +255,7 @@
     <Content Include="Views\Comments\_CommentPartial.cshtml" />
     <Content Include="Views\Comments\_CreateCommentPartial.cshtml" />
     <Content Include="Views\Questionary\Index.cshtml" />
+    <Content Include="Views\Questionary\_FormPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

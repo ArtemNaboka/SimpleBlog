@@ -1,5 +1,10 @@
 ﻿using System;
+using System.Linq;
+using System.Net;
+using System.Threading.Tasks;
+using System.Web;
 using System.Web.Mvc;
+using Blog.Infrastructure;
 using Blog.Services.Interfaces;
 using Blog.ViewModels;
 
@@ -14,16 +19,26 @@ namespace Blog.Controllers
             _questionariesService = questionariesService;
         }
 
-        public ActionResult Index()
+        public async Task<ActionResult> Index()
         {
             var qvm = new QuestionaryViewModel();
 
             if (HttpContext.Request.HttpMethod.Equals("POST", StringComparison.InvariantCultureIgnoreCase))
             {
-                //HttpContext.Response.Cookies.Add(new HttpCookie());
+                var fillingQuestionary = new FillingQuestionaryViewModel();
+                if (!TryUpdateModel(fillingQuestionary))
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+
+                var answers = SimpleMapper.ViewModelToQuestionary(fillingQuestionary);
+                await _questionariesService.AddRangeAsync(answers);
+                HttpContext.Response.Cookies.Add(new HttpCookie("UserHasFilled", "true"));
+                return RedirectToAction("Index");
             }
 
-            qvm.UserHasFilled = Convert.ToBoolean(HttpContext.Response.Cookies["UserHasFilled"]?.Value);
+            qvm.UserHasFilled = HttpContext.Request.Cookies.AllKeys.Contains("UserHasFilled") 
+                && Convert.ToBoolean(HttpContext.Request.Cookies["UserHasFilled"]?.Value);
 
             return View(qvm);
         }

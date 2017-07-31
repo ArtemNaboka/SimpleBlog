@@ -1,0 +1,24 @@
+﻿@model Blog.ViewModels.FillingQuestionaryViewModel
+
+@using (Html.BeginForm("Index", "Questionary", FormMethod.Post))
+{
+    @Html.EditorFor(m => m.City)
+    <br />
+    @*foreach (var ageRangeValue in Model.AgeRange.Values)
+    {
+        @Html.RadioButtonFor(m => m.AgeRange.AgeRange, ageRangeValue)
+        @Html.LabelFor(m => m, ageRangeValue)
+    }
+    @Html.LabelFor(m => m.AgeRange.AgeRange)
+    <br />*@
+    @*foreach (var pair in Model.HowLongReadBlog.ValuesAndLabels)
+    {
+        @Html.RadioButtonFor(m => m.HowLongReadBlog.Value, pair.Key)
+        @Html.LabelFor(m => m.HowLongReadBlog.Value, pair.Value)
+    }
+    <br />*@
+    @Html.EditorFor(m => m.Wishes)
+    <br />
+
+    <input type="submit" value="Submit" />
+}

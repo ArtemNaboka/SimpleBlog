@@ -6,21 +6,7 @@
 
 @if (!Model.UserHasFilled)
 {
-    using (Html.BeginForm("Index", "Questionary", FormMethod.Post))
-    {
-        @Html.EditorFor(m => m.FillingQuestionary.City)
-        <br/>
-        @Html.RadioButtonFor(m => m.FillingQuestionary.AgeRange, "LaLaLa")
-        @Html.LabelFor(m => m.FillingQuestionary.AgeRange)
-        <br />
-        @Html.RadioButtonFor(m => m.FillingQuestionary.HowLongReadBlog, "asd")
-        @Html.LabelFor(m => m.FillingQuestionary.HowLongReadBlog)
-        <br />
-        @Html.EditorFor(m => m.FillingQuestionary.Wishes)
-        <br />
-
-        <input type="submit" value="Submit" />
-    }
+    @Html.Partial("_FormPartial", Model.FillingQuestionary)
 }
 else
 {

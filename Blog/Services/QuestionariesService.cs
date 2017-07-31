@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using Blog.Models;
 using Blog.Repositories.Interfaces;
 using Blog.Services.Interfaces;
@@ -14,9 +15,17 @@ namespace Blog.Services
             _questionariesRepository = questionariesRepository;
         }
 
-        public async Task CreateAsync(Questionary questionary)
+        public async Task AddAsync(Questionary questionary)
         {
             await _questionariesRepository.AddAsync(questionary);
+        }
+
+        public async Task AddRangeAsync(IEnumerable<Questionary> answers)
+        {
+            foreach (var answer in answers)
+            {
+                await AddAsync(answer);
+            }
         }
     }
 }

@@ -14,14 +14,8 @@ namespace Blog.ViewModels
         [Display(Name = "Wishes for the blog")]
         public string Wishes { get; set; }
 
-        [Required]
-        [Display(Name = "Your age")]
-        public string AgeRange { get; set; }
+        public AgeRangeViewModel AgeRange { get; set; }
 
-        [Required]
-        [Display(Name = "How long have you been reading a blog")]
-        public string HowLongReadBlog { get; set; }
-
-
+        public HowLongReadBlogViewModel HowLongReadBlog { get; set; }
     }
 }
