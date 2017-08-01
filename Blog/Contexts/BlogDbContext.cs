@@ -10,13 +10,4 @@ namespace Blog.Contexts
         public DbSet<Comment> Comments { get; set; }
         public DbSet<Questionary> Questionaries { get; set; }
     }
-
-
-    public class BlogDbContextInitializer : DropCreateDatabaseAlways<BlogDbContext>
-    {
-        protected override void Seed(BlogDbContext dbContext)
-        {
-            
-        }
-    }
 }
