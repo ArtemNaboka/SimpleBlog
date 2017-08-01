@@ -16,12 +16,40 @@ namespace Blog.Infrastructure
                 new Questionary {Answer = viewModel.HowLongReadBlog.Value, QuestionType = nameof(viewModel.HowLongReadBlog)}
             };
 
-            foreach (var interesting in viewModel.Interestings.Checkboxes)
+            if (viewModel.Interestings.ExpiriencedAuthors)
             {
-                if (interesting.Value)
+                questionaries.Add(new Questionary
                 {
-                    questionaries.Add(new Questionary { Answer = interesting.Label, QuestionType = "Interestings" });
-                }
+                    Answer = nameof(viewModel.Interestings.ExpiriencedAuthors),
+                    QuestionType = nameof(viewModel.Interestings)
+                });
+            }
+
+            if (viewModel.Interestings.ManyCodeExamples)
+            {
+                questionaries.Add(new Questionary
+                {
+                    Answer = nameof(viewModel.Interestings.ManyCodeExamples),
+                    QuestionType = nameof(viewModel.Interestings)
+                });
+            }
+
+            if (viewModel.Interestings.RelevantTechnologies)
+            {
+                questionaries.Add(new Questionary
+                {
+                    Answer = nameof(viewModel.Interestings.RelevantTechnologies),
+                    QuestionType = nameof(viewModel.Interestings)
+                });
+            }
+
+            if (viewModel.Interestings.Other)
+            {
+                questionaries.Add(new Questionary
+                {
+                    Answer = nameof(viewModel.Interestings.Other),
+                    QuestionType = nameof(viewModel.Interestings)
+                });
             }
 
             return questionaries;

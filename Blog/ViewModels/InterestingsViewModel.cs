@@ -6,7 +6,16 @@ namespace Blog.ViewModels
 {
     public class InterestingsViewModel
     {
-        [Display(Name = "What are your interesting on this blog?")]
-        public IEnumerable<LabelValuePair<bool>> Checkboxes { get; set; } = QuestionaryCases.Interestings;
+        [Display(Name = "Many code examples")]
+        public bool ManyCodeExamples { get; set; }
+
+        [Display(Name = "The most relevant technologies")]
+        public bool RelevantTechnologies { get; set; }
+
+        [Display(Name = "Expirienced authors")]
+        public bool ExpiriencedAuthors { get; set; }
+
+        [Display(Name = "Other")]
+        public bool Other { get; set; }
     }
 }

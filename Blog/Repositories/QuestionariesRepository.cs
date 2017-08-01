@@ -18,9 +18,9 @@ namespace Blog.Repositories
         public override async Task AddAsync(Questionary item)
         {
             var existingQuestionary = (await GetItemsAsync(qs =>
-                qs.Where(q => q.Answer.Equals(item.QuestionType, StringComparison.InvariantCultureIgnoreCase) 
+                qs.Where(q => q.Answer.Equals(item.Answer, StringComparison.InvariantCultureIgnoreCase) 
                 && q.QuestionType.Equals(item.QuestionType, StringComparison.InvariantCultureIgnoreCase))))
-                .SingleOrDefault();
+                .FirstOrDefault();
 
             if (existingQuestionary == null)
             {

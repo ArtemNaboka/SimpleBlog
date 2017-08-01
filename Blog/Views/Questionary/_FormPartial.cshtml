@@ -28,13 +28,25 @@
         </div>
         
         <div class="form-group">
-            @Html.LabelFor(model => model.Interestings.Checkboxes, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.Label("What are your interesting on this blog?", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @foreach (var interesting in Model.Interestings.Checkboxes)
+                @*@foreach (var interesting in Model.Interestings.Checkboxes)
                 {
                     @Html.CheckBox("Interesting" , interesting.Value, htmlAttributes: new { id = interesting.Label })
                     <label for="@interesting.Label">@interesting.Label</label>
-                }
+                }*@
+                
+                @Html.CheckBoxFor(model => model.Interestings.ManyCodeExamples)
+                @Html.LabelFor(model => model.Interestings.ManyCodeExamples)
+                
+                @Html.CheckBoxFor(model => model.Interestings.ExpiriencedAuthors)
+                @Html.LabelFor(model => model.Interestings.ExpiriencedAuthors)
+                
+                @Html.CheckBoxFor(model => model.Interestings.RelevantTechnologies)
+                @Html.LabelFor(model => model.Interestings.RelevantTechnologies)
+                
+                @Html.CheckBoxFor(model => model.Interestings.Other)
+                @Html.LabelFor(model => model.Interestings.Other)
             </div>
         </div>
 
