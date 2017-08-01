@@ -40,6 +40,8 @@ namespace Blog.Controllers
             qvm.UserHasFilled = HttpContext.Request.Cookies.AllKeys.Contains("UserHasFilled") 
                 && Convert.ToBoolean(HttpContext.Request.Cookies["UserHasFilled"]?.Value);
 
+            qvm.QuestionaryResults = await _questionariesService.GetStatistics();
+
             return View(qvm);
         }
     }

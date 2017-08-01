@@ -8,5 +8,6 @@ namespace Blog.Services.Interfaces
     {
         Task AddAsync(Questionary questionary);
         Task AddRangeAsync(IEnumerable<Questionary> questionaries);
+        Task<QuestionaryResults> GetStatistics();
     }
 }

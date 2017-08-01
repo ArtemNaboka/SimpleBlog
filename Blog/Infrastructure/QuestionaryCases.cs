@@ -4,6 +4,15 @@ namespace Blog.Infrastructure
 {
     public class QuestionaryCases
     {
+        public enum QuestionaryTypes
+        {
+            City,
+            Wishes,
+            AgeRange,
+            HowLongReadBlog,
+            Interestings
+        }
+
         public static readonly Dictionary<string, string> AgeRangeValuesAndLabels = new Dictionary<string, string>
         {
             ["< 18"] = "> 18",

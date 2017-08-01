@@ -10,5 +10,35 @@
 }
 else
 {
-    <h1>Bravo!</h1>
+    <div class="statistic-results">
+        <h4>Top cities</h4>
+        @foreach (var stat in Model.QuestionaryResults.CityStatistics)
+        {
+            <p><b>@stat.Answer:</b> @stat.AnsweredPercent% (@stat.AnsweredCount)</p>
+        }
+        
+        <hr/>
+
+        <h4>Interesting statistics</h4>
+        @foreach (var stat in Model.QuestionaryResults.InterestingsStatistics)
+        {
+            <p><b>@stat.Answer:</b> @stat.AnsweredPercent% (@stat.AnsweredCount)</p>
+        }
+        
+        <hr/>
+        
+        <h4>Age range statistics</h4>
+        @foreach (var stat in Model.QuestionaryResults.AgeRangeStatistics)
+        {
+            <p><b>@stat.Answer:</b> @stat.AnsweredPercent% (@stat.AnsweredCount)</p>
+        }
+        
+        <hr/>
+        
+        <h4>How long users read our blog statistics</h4>
+        @foreach (var stat in Model.QuestionaryResults.HowLongReadBlogStatistics)
+        {
+            <p><b>@stat.Answer:</b> @stat.AnsweredPercent% (@stat.AnsweredCount)</p>
+        }
+    </div>
 }

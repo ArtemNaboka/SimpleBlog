@@ -10,10 +10,10 @@ namespace Blog.Infrastructure
         {
             var questionaries = new List<Questionary>
             {
-                new Questionary {Answer = viewModel.City, QuestionType = nameof(viewModel.City)},
-                new Questionary {Answer = viewModel.Wishes, QuestionType = nameof(viewModel.Wishes)},
-                new Questionary {Answer = viewModel.AgeRange.Value, QuestionType = nameof(viewModel.AgeRange)},
-                new Questionary {Answer = viewModel.HowLongReadBlog.Value, QuestionType = nameof(viewModel.HowLongReadBlog)}
+                new Questionary {Answer = viewModel.City, QuestionType = QuestionaryCases.QuestionaryTypes.City.ToString()},
+                new Questionary {Answer = viewModel.Wishes, QuestionType = QuestionaryCases.QuestionaryTypes.Wishes.ToString()},
+                new Questionary {Answer = viewModel.AgeRange.Value, QuestionType = QuestionaryCases.QuestionaryTypes.AgeRange.ToString()},
+                new Questionary {Answer = viewModel.HowLongReadBlog.Value, QuestionType = QuestionaryCases.QuestionaryTypes.HowLongReadBlog.ToString()}
             };
 
             if (viewModel.Interestings.ExpiriencedAuthors)
@@ -21,7 +21,7 @@ namespace Blog.Infrastructure
                 questionaries.Add(new Questionary
                 {
                     Answer = nameof(viewModel.Interestings.ExpiriencedAuthors),
-                    QuestionType = nameof(viewModel.Interestings)
+                    QuestionType = QuestionaryCases.QuestionaryTypes.Interestings.ToString()
                 });
             }
 
@@ -30,7 +30,7 @@ namespace Blog.Infrastructure
                 questionaries.Add(new Questionary
                 {
                     Answer = nameof(viewModel.Interestings.ManyCodeExamples),
-                    QuestionType = nameof(viewModel.Interestings)
+                    QuestionType = QuestionaryCases.QuestionaryTypes.Interestings.ToString()
                 });
             }
 
@@ -39,7 +39,7 @@ namespace Blog.Infrastructure
                 questionaries.Add(new Questionary
                 {
                     Answer = nameof(viewModel.Interestings.RelevantTechnologies),
-                    QuestionType = nameof(viewModel.Interestings)
+                    QuestionType = QuestionaryCases.QuestionaryTypes.Interestings.ToString()
                 });
             }
 
@@ -48,7 +48,7 @@ namespace Blog.Infrastructure
                 questionaries.Add(new Questionary
                 {
                     Answer = nameof(viewModel.Interestings.Other),
-                    QuestionType = nameof(viewModel.Interestings)
+                    QuestionType = QuestionaryCases.QuestionaryTypes.Interestings.ToString()
                 });
             }
 
