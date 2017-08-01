@@ -1,8 +1,9 @@
-﻿namespace Blog.Models
+﻿using Blog.Models.Entities.Base;
+
+namespace Blog.Models.Entities
 {
-    public class Questionary
+    public class Questionary : BaseEntity
     {
-        public int Id { get; set; }
         public string Answer { get; set; }
         public string QuestionType { get; set; }
         public int AnsweredCount { get; set; }

@@ -184,9 +184,10 @@
       <DependentUpon>201707311219278_Questionary.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\Article.cs" />
-    <Compile Include="Models\Comment.cs" />
-    <Compile Include="Models\Questionary.cs" />
+    <Compile Include="Models\Entities\Article.cs" />
+    <Compile Include="Models\Entities\Base\BaseEntity.cs" />
+    <Compile Include="Models\Entities\Comment.cs" />
+    <Compile Include="Models\Entities\Questionary.cs" />
     <Compile Include="Models\QuestionaryResults.cs" />
     <Compile Include="Models\Statistics.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

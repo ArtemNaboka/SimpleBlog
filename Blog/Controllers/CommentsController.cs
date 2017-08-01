@@ -3,6 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 using Blog.Models;
+using Blog.Models.Entities;
 using Blog.Services.Interfaces;
 using Blog.ViewModels;
 

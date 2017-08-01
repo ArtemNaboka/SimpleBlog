@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Blog.Models;
+using Blog.Models.Entities;
 using Blog.ViewModels;
 
 namespace Blog.Infrastructure

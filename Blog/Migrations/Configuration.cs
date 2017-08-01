@@ -1,5 +1,6 @@
 using Blog.Infrastructure;
 using Blog.Models;
+using Blog.Models.Entities;
 
 namespace Blog.Migrations
 {
@@ -97,79 +98,79 @@ namespace Blog.Migrations
 
             context.Questionaries.AddRange(new[]
             {
-                new Models.Questionary
+                new Models.Entities.Questionary
                 {
                     Answer = "Los Angeles",
                     QuestionType = QuestionaryCases.QuestionaryTypes.City.ToString(),
                     AnsweredCount = 13
                 },
-                new Models.Questionary
+                new Models.Entities.Questionary
                 {
                     Answer = "Las Vegas",
                     QuestionType = QuestionaryCases.QuestionaryTypes.City.ToString(),
                     AnsweredCount = 25
                 },
-                new Models.Questionary
+                new Models.Entities.Questionary
                 {
                     Answer = "New York",
                     QuestionType = QuestionaryCases.QuestionaryTypes.City.ToString(),
                     AnsweredCount = 2
                 },
-                new Models.Questionary
+                new Models.Entities.Questionary
                 {
                     Answer = "> 18",
                     QuestionType = QuestionaryCases.QuestionaryTypes.AgeRange.ToString(),
                     AnsweredCount = 15
                 },
-                new Models.Questionary
+                new Models.Entities.Questionary
                 {
                     Answer = "19-45",
                     QuestionType = QuestionaryCases.QuestionaryTypes.AgeRange.ToString(),
                     AnsweredCount = 15
                 },
-                new Models.Questionary
+                new Models.Entities.Questionary
                 {
                     Answer = "46-60",
                     QuestionType = QuestionaryCases.QuestionaryTypes.AgeRange.ToString(),
                     AnsweredCount = 10
                 },
-                new Models.Questionary
+                new Models.Entities.Questionary
                 {
                     Answer = "< 1 year",
                     QuestionType = QuestionaryCases.QuestionaryTypes.HowLongReadBlog.ToString(),
                     AnsweredCount = 18
                 },
-                new Models.Questionary
+                new Models.Entities.Questionary
                 {
                     Answer = "1-2 years",
                     QuestionType = QuestionaryCases.QuestionaryTypes.HowLongReadBlog.ToString(),
                     AnsweredCount = 18
                 },
-                new Models.Questionary
+                new Models.Entities.Questionary
                 {
                     Answer = "3 years <",
                     QuestionType = QuestionaryCases.QuestionaryTypes.HowLongReadBlog.ToString(),
                     AnsweredCount = 4
                 },
-                new Models.Questionary
+                new Models.Entities.Questionary
                 {
                     Answer = QuestionaryCases.InterestingTypes.ExpiriencedAuthors.ToString(),
                     QuestionType = QuestionaryCases.QuestionaryTypes.Interestings.ToString(),
                     AnsweredCount = 12
                 },
-                new Models.Questionary
+                new Models.Entities.Questionary
                 {
                     Answer = QuestionaryCases.InterestingTypes.RelevantTechnologies.ToString(),
                     QuestionType = QuestionaryCases.QuestionaryTypes.Interestings.ToString(),
                     AnsweredCount = 37
                 },
-                new Models.Questionary
+                new Models.Entities.Questionary
                 {
                     Answer = QuestionaryCases.InterestingTypes.ManyCodeExamples.ToString(),
                     QuestionType = QuestionaryCases.QuestionaryTypes.Interestings.ToString(),
                     AnsweredCount = 34
                 },
-                new Models.Questionary
+                new Models.Entities.Questionary
                 {
                     Answer = QuestionaryCases.InterestingTypes.Other.ToString(),
                     QuestionType = QuestionaryCases.QuestionaryTypes.Interestings.ToString(),

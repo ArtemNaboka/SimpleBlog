@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Blog.Models;
+using Blog.Models.Entities;
 using Blog.Repositories.Interfaces;
 using Blog.Services.Interfaces;
 
@@ -37,6 +38,7 @@ namespace Blog.Services
 
         public async Task CreateAsync(Article article)
         {
+            article.PublishDate = DateTime.UtcNow;
             await _articlesRepository.AddAsync(article);
         }
 

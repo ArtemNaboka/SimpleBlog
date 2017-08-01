@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Blog.Infrastructure;
 using Blog.Models;
+using Blog.Models.Entities;
 using Blog.Repositories.Interfaces;
 using Blog.Services.Interfaces;
 

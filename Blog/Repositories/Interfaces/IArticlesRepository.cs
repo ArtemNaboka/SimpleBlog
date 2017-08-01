@@ -1,4 +1,5 @@
 ﻿using Blog.Models;
+using Blog.Models.Entities;
 
 namespace Blog.Repositories.Interfaces
 {

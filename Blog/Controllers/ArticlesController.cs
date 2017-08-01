@@ -5,6 +5,7 @@ using System.Net;
 using System.Text;
 using System.Web.Mvc;
 using Blog.Models;
+using Blog.Models.Entities;
 using Blog.Services.Interfaces;
 using Blog.ViewModels;
 

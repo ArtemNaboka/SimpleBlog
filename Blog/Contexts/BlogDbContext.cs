@@ -1,5 +1,6 @@
 ﻿using System.Data.Entity;
 using Blog.Models;
+using Blog.Models.Entities;
 
 namespace Blog.Contexts
 {

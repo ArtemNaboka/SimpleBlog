@@ -5,12 +5,13 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 using Blog.Contexts;
+using Blog.Models.Entities.Base;
 using Blog.Repositories.Interfaces;
 
 namespace Blog.Repositories.Base
 {
     public abstract class CrudRepositoryBase<TEntity> : ICrudRepository<TEntity> 
-        where TEntity: class
+        where TEntity: BaseEntity
     {
         protected CrudRepositoryBase(BlogDbContext dbContext)
         {
@@ -54,7 +55,7 @@ namespace Blog.Repositories.Base
 
     public abstract class CrudRepositoryBase<TEntity, TKey> : CrudRepositoryBase<TEntity>,
         ICrudRepository<TEntity, TKey>
-        where TEntity : class
+        where TEntity : BaseEntity
     {
         protected CrudRepositoryBase(BlogDbContext dbContext) : base(dbContext)
         {

@@ -2,6 +2,7 @@
 using System.Linq.Expressions;
 using Blog.Contexts;
 using Blog.Models;
+using Blog.Models.Entities;
 using Blog.Repositories.Base;
 using Blog.Repositories.Interfaces;
 

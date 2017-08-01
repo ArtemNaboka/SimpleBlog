@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Blog.Models;
+using Blog.Models.Entities;
 using Blog.Repositories.Interfaces;
 using Blog.Services.Interfaces;
 
@@ -47,6 +48,7 @@ namespace Blog.Services
 
         public async Task CreateAsync(Comment comment)
         {
+            comment.PublishDate = DateTime.UtcNow;
             await _commentsRepository.AddAsync(comment);
         }
 

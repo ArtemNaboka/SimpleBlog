@@ -1,12 +1,11 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using Blog.Models.Entities.Base;
 
-namespace Blog.Models
+namespace Blog.Models.Entities
 {
-    public class Article
+    public class Article : BaseEntity
     {
-        public int Id { get; set; }
-
         [Required]
         [Display(Name = "Article Name")]
         public string Name { get; set; }
