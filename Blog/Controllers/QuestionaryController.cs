@@ -31,6 +31,7 @@ namespace Blog.Controllers
                     return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
                 }
 
+                TrimModelStrings(fillingQuestionary);
                 var answers = SimpleMapper.ViewModelToQuestionary(fillingQuestionary);
                 await _questionariesService.AddRangeAsync(answers);
                 HttpContext.Response.Cookies.Add(new HttpCookie("UserHasFilled", "true"));
@@ -44,5 +45,15 @@ namespace Blog.Controllers
 
             return View(qvm);
         }
+
+        #region Helpers
+
+        private void TrimModelStrings(FillingQuestionaryViewModel model)
+        {
+            model.City = model.City.Trim();
+            model.Wishes = model.Wishes.Trim();
+        }
+
+        #endregion
     }
 }
