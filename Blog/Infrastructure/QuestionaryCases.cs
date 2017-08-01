@@ -13,6 +13,14 @@ namespace Blog.Infrastructure
             Interestings
         }
 
+        public enum InterestingTypes
+        {
+            ExpiriencedAuthors,
+            ManyCodeExamples,
+            RelevantTechnologies,
+            Other
+        }
+
         public static readonly Dictionary<string, string> AgeRangeValuesAndLabels = new Dictionary<string, string>
         {
             ["< 18"] = "> 18",

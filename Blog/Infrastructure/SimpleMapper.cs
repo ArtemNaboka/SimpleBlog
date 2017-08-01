@@ -20,7 +20,7 @@ namespace Blog.Infrastructure
             {
                 questionaries.Add(new Questionary
                 {
-                    Answer = nameof(viewModel.Interestings.ExpiriencedAuthors),
+                    Answer = QuestionaryCases.InterestingTypes.ExpiriencedAuthors.ToString(),
                     QuestionType = QuestionaryCases.QuestionaryTypes.Interestings.ToString()
                 });
             }
@@ -29,7 +29,7 @@ namespace Blog.Infrastructure
             {
                 questionaries.Add(new Questionary
                 {
-                    Answer = nameof(viewModel.Interestings.ManyCodeExamples),
+                    Answer = QuestionaryCases.InterestingTypes.ManyCodeExamples.ToString(),
                     QuestionType = QuestionaryCases.QuestionaryTypes.Interestings.ToString()
                 });
             }
@@ -38,7 +38,7 @@ namespace Blog.Infrastructure
             {
                 questionaries.Add(new Questionary
                 {
-                    Answer = nameof(viewModel.Interestings.RelevantTechnologies),
+                    Answer = QuestionaryCases.InterestingTypes.RelevantTechnologies.ToString(),
                     QuestionType = QuestionaryCases.QuestionaryTypes.Interestings.ToString()
                 });
             }
@@ -47,7 +47,7 @@ namespace Blog.Infrastructure
             {
                 questionaries.Add(new Questionary
                 {
-                    Answer = nameof(viewModel.Interestings.Other),
+                    Answer = QuestionaryCases.InterestingTypes.Other.ToString(),
                     QuestionType = QuestionaryCases.QuestionaryTypes.Interestings.ToString()
                 });
             }
