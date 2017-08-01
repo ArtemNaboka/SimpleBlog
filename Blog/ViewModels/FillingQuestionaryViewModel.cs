@@ -17,5 +17,7 @@ namespace Blog.ViewModels
         public AgeRangeViewModel AgeRange { get; set; } = new AgeRangeViewModel();
 
         public HowLongReadBlogViewModel HowLongReadBlog { get; set; } = new HowLongReadBlogViewModel();
+
+        public InterestingsViewModel Interestings { get; set; } = new InterestingsViewModel();
     }
 }

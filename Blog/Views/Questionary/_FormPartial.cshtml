@@ -28,6 +28,18 @@
         </div>
         
         <div class="form-group">
+            @Html.LabelFor(model => model.Interestings.Checkboxes, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @foreach (var interesting in Model.Interestings.Checkboxes)
+                {
+                    @Html.CheckBox("Interesting" , interesting.Value, htmlAttributes: new { id = interesting.Label })
+                    <label for="@interesting.Label">@interesting.Label</label>
+                }
+            </div>
+        </div>
+
+
+        <div class="form-group">
             @Html.LabelFor(model => model.HowLongReadBlog.Value, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @foreach (var age in Model.HowLongReadBlog.ValuesAndLabels)
@@ -37,7 +49,6 @@
                 }
             </div>
         </div>
-
 
         <div class="form-group">
             @Html.LabelFor(model => model.Wishes, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -53,4 +64,15 @@
             </div>
         </div>
     </div>
+}
+
+@section Scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script>
+        $(document).ready(function() {
+            $("input[type=radio]:first-child").attr("selected", "");
+        });
+    </script>
 }

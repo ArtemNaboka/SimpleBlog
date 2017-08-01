@@ -12,9 +12,17 @@ namespace Blog.Infrastructure
             {
                 new Questionary {Answer = viewModel.City, QuestionType = nameof(viewModel.City)},
                 new Questionary {Answer = viewModel.Wishes, QuestionType = nameof(viewModel.Wishes)},
-                new Questionary {Answer = viewModel.AgeRange?.Value, QuestionType = nameof(viewModel.AgeRange)},
-                new Questionary {Answer = viewModel.HowLongReadBlog?.Value, QuestionType = nameof(viewModel.HowLongReadBlog)}
+                new Questionary {Answer = viewModel.AgeRange.Value, QuestionType = nameof(viewModel.AgeRange)},
+                new Questionary {Answer = viewModel.HowLongReadBlog.Value, QuestionType = nameof(viewModel.HowLongReadBlog)}
             };
+
+            foreach (var interesting in viewModel.Interestings.Checkboxes)
+            {
+                if (interesting.Value)
+                {
+                    questionaries.Add(new Questionary { Answer = interesting.Label, QuestionType = "Interestings" });
+                }
+            }
 
             return questionaries;
         }

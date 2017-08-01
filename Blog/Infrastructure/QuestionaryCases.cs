@@ -18,5 +18,13 @@ namespace Blog.Infrastructure
             ["1-2 years"] = "1-2 years",
             ["3 years <"] = "3 years <"
         };
+
+        public static readonly IEnumerable<LabelValuePair<bool>> Interestings = new[]
+        {
+            new LabelValuePair<bool>("Many code examples"),
+            new LabelValuePair<bool>("The most relevant technologies"),
+            new LabelValuePair<bool>("Very expirienced authors"),
+            new LabelValuePair<bool>("Other"),
+        };
     }
 }
