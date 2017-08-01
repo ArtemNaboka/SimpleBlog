@@ -168,7 +168,6 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\ListHelper.cs" />
-    <Compile Include="Infrastructure\InterestingsModelBinder.cs" />
     <Compile Include="Infrastructure\LabelValuePair.cs" />
     <Compile Include="Infrastructure\QuestionaryCases.cs" />
     <Compile Include="Infrastructure\SimpleMapper.cs" />
