@@ -1,6 +1,8 @@
-﻿namespace Blog.Domain.Repositories.Interfaces
+﻿using Blog.Domain.Entities;
+
+namespace Blog.Domain.Repositories.Interfaces
 {
-    public interface IQuestionaryAnswersRepository
+    public interface IQuestionaryAnswersRepository : IGenericRepository<QuestionaryAnswer, int>
     {
         
     }
