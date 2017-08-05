@@ -13,6 +13,7 @@ namespace Blog.Business.Infrastructure.DI
             repositoryModule.Load();
 
             Bind<IArticlesRepository>().To<SqlArticlesRepository>();
+            Bind<ICommentsRepository>().To<SqlCommentsRepository>();
         }
     }
 }

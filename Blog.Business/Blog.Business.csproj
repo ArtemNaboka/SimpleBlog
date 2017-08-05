@@ -54,6 +54,7 @@
     <Compile Include="Models\DTO\QuestionaryAnswerModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\ArticlesService.cs" />
+    <Compile Include="Services\CommentsService.cs" />
     <Compile Include="Services\Interfaces\IArticlesService.cs" />
     <Compile Include="Services\Interfaces\ICommentsService.cs" />
     <Compile Include="Services\Interfaces\IQuestionaryAnswersService.cs" />

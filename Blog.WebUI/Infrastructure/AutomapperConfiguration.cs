@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Blog.Business.Models.DTO;
 using Blog.WebUI.ViewModels.ArticleViewModels;
+using Blog.WebUI.ViewModels.CommentViewModels;
 
 namespace Blog.WebUI.Infrastructure
 {
@@ -12,6 +13,7 @@ namespace Blog.WebUI.Infrastructure
             {
                 Business.Infrastructure.AutomapperConfiguration.Configure(cfg);
                 cfg.CreateMap<ArticleModel, ArticleViewModel>().ReverseMap();
+                cfg.CreateMap<CommentModel, CommentViewModel>().ReverseMap();
             });
         }
     }

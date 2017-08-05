@@ -8,7 +8,8 @@ namespace Blog.Business.Infrastructure
     {
         public static void Configure(IMapperConfigurationExpression cfg)
         {
-            cfg.CreateMap<Article, ArticleModel>().ReverseMap();          
+            cfg.CreateMap<Article, ArticleModel>().ReverseMap();
+            cfg.CreateMap<Comment, CommentModel>().ReverseMap();
         }
     }
 }

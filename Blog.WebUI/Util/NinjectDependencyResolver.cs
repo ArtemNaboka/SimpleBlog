@@ -30,6 +30,7 @@ namespace Blog.WebUI.Util
         private void AddBindings()
         {
             _kernel.Bind<IArticlesService>().To<ArticlesService>();
+            _kernel.Bind<ICommentsService>().To<CommentsService>();
         }
     }
 }
