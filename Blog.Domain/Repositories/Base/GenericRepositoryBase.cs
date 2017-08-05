@@ -14,7 +14,7 @@ namespace Blog.Domain.Repositories.Base
     public abstract class GenericRepositoryBase<TEntity> : IGenericRepository<TEntity>
         where TEntity : BaseEntity
     {
-        protected GenericRepositoryBase(IDbContext dbContext)
+        protected GenericRepositoryBase(BlogDbContext dbContext)
         {
             BlogDbContext = dbContext;
             DbSet = dbContext.Set<TEntity>();

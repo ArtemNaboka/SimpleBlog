@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Infrastructure\AutomapperConfiguration.cs" />
     <Compile Include="Infrastructure\DI\ServiceModule.cs" />
     <Compile Include="Models\DTO\ArticleModel.cs" />
     <Compile Include="Models\DTO\Base\BaseModel.cs" />

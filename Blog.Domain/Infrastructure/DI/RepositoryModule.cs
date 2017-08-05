@@ -9,7 +9,7 @@ namespace Blog.Domain.Infrastructure.DI
     {
         public override void Load()
         {
-            Bind<IDbContext>().To<BlogDbContext>();
+            //Bind<IDbContext>().To<BlogDbContext>();
         }
     }
 }

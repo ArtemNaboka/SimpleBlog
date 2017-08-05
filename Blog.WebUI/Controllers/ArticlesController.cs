@@ -70,7 +70,7 @@ namespace Blog.WebUI.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "Id,Name,PublishDate,Text")] ArticleViewModel article)
+        public async Task<ActionResult> Create([Bind(Include = "Id,Name,Text")] ArticleViewModel article)
         {
             if (ModelState.IsValid)
             {
