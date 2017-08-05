@@ -6,7 +6,7 @@ using Blog.Domain.Entities;
 
 namespace Blog.Business.Services.Interfaces
 {
-    public interface ICommentsService : IService<ArticleModel>
+    public interface ICommentsService : IService<CommentModel>
     {
         Task<IEnumerable<CommentModel>> GetCommentsAsync();
         Task<CommentModel> GetCommentAsync(int commentId);

@@ -2,7 +2,7 @@
 
 namespace Blog.Business.Services.Interfaces
 {
-    public interface IQuestionaryAnswersService : IService<ArticleModel>
+    public interface IQuestionaryAnswersService : IService<QuestionaryAnswerModel>
     {
         
     }
