@@ -4,7 +4,6 @@ using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
-using Blog.Domain.Contexts;
 using Blog.Domain.Contexts.Interfaces;
 using Blog.Domain.Entities.Base;
 using Blog.Domain.Repositories.Interfaces;
@@ -14,7 +13,7 @@ namespace Blog.Domain.Repositories.Base
     public abstract class GenericRepositoryBase<TEntity> : IGenericRepository<TEntity>
         where TEntity : BaseEntity
     {
-        protected GenericRepositoryBase(BlogDbContext dbContext)
+        protected GenericRepositoryBase(IDbContext dbContext)
         {
             BlogDbContext = dbContext;
             DbSet = dbContext.Set<TEntity>();
@@ -57,7 +56,7 @@ namespace Blog.Domain.Repositories.Base
     public abstract class GenericRepositoryBase<TEntity, TKey> : GenericRepositoryBase<TEntity>, IGenericRepository<TEntity, TKey>
         where TEntity : BaseEntity
     {
-        protected GenericRepositoryBase(BlogDbContext dbContext) : base(dbContext)
+        protected GenericRepositoryBase(IDbContext dbContext) : base(dbContext)
         {
         }
 

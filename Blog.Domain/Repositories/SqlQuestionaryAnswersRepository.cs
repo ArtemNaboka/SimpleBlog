@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
-using Blog.Domain.Contexts;
+using Blog.Domain.Contexts.Interfaces;
 using Blog.Domain.Entities;
 using Blog.Domain.Repositories.Base;
 using Blog.Domain.Repositories.Interfaces;
@@ -12,7 +12,7 @@ namespace Blog.Domain.Repositories
     public class SqlQuestionaryAnswersRepository : GenericRepositoryBase<QuestionaryAnswer, int>,
         IQuestionaryAnswersRepository
     {
-        public SqlQuestionaryAnswersRepository(BlogDbContext dbContext) : base(dbContext)
+        public SqlQuestionaryAnswersRepository(IDbContext dbContext) : base(dbContext)
         {
 
         }
