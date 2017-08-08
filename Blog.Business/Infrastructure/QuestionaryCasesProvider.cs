@@ -4,7 +4,7 @@ namespace Blog.Business.Infrastructure
 {
     /// <summary>
     /// The class that provides string matches for enums.
-    /// This strings are used in domain layer
+    /// This strings are used in web layer as labels and in DB as question types
     /// </summary>
     public static class QuestionaryCasesProvider
     {
@@ -17,7 +17,7 @@ namespace Blog.Business.Infrastructure
             [QuestionaryTypes.Wishes] = "Wishes"
         };
 
-        public static Dictionary<AgeRange, string> AgeRangeValuesAndLabels => new Dictionary<AgeRange, string>
+        public static Dictionary<AgeRange, string> AgeRangeStringMatches => new Dictionary<AgeRange, string>
         {
             [AgeRange.LessThanEighteen] = "> 18",
             [AgeRange.BetweenEighteenAndFourtyFive] = "18-45",
@@ -25,14 +25,14 @@ namespace Blog.Business.Infrastructure
             [AgeRange.MoreThanSixty] = "60 <"
         };
 
-        public static Dictionary<HowLongReadBlog, string> HowLongReadBlogValues => new Dictionary<HowLongReadBlog, string>
+        public static Dictionary<HowLongReadBlog, string> HowLongReadBlogStringMatches => new Dictionary<HowLongReadBlog, string>
         {
             [HowLongReadBlog.LessThanOneYear] = "> 1",
             [HowLongReadBlog.FromOneToTwoYears] = "1-2",
             [HowLongReadBlog.MoreThanThreeYears] = "3 <"
         };
 
-        public static Dictionary<InterestingTypes, string> InterestingsValues => new Dictionary<InterestingTypes, string>
+        public static Dictionary<InterestingTypes, string> InterestingsStringMatchces => new Dictionary<InterestingTypes, string>
         {
             [InterestingTypes.ExpiriencedAuthors] = "Very expirienced authors",
             [InterestingTypes.ManyCodeExamples] = "Many code examples",

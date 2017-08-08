@@ -8,6 +8,6 @@ namespace Blog.WebUI.ViewModels.QuestionariesViewModels
         public IEnumerable<InterestingTypes> InterestingsValues { get; set; }
 
         public Dictionary<InterestingTypes, string> ValuesAndLabels { get; set; } =
-            QuestionaryCasesProvider.InterestingsValues;
+            QuestionaryCasesProvider.InterestingsStringMatchces;
     }
 }

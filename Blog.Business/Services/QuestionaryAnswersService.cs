@@ -37,19 +37,19 @@ namespace Blog.Business.Services
                 },
                 new QuestionaryAnswerModel
                 {
-                    Answer = QuestionaryCasesProvider.AgeRangeValuesAndLabels[model.AgeRange],
+                    Answer = QuestionaryCasesProvider.AgeRangeStringMatches[model.AgeRange],
                     QuestionType = QuestionaryCasesProvider.QuestionTypesStrings[QuestionaryTypes.AgeRange]
                 },
                 new QuestionaryAnswerModel
                 {
-                    Answer = QuestionaryCasesProvider.HowLongReadBlogValues[model.HowLongReadBlog],
+                    Answer = QuestionaryCasesProvider.HowLongReadBlogStringMatches[model.HowLongReadBlog],
                     QuestionType = QuestionaryCasesProvider.QuestionTypesStrings[QuestionaryTypes.HowLongReadBlog]
                 }
             };
 
             qList.AddRange(model.Interestings.Select(interesting => new QuestionaryAnswerModel
             {
-                Answer = QuestionaryCasesProvider.InterestingsValues[interesting],
+                Answer = QuestionaryCasesProvider.InterestingsStringMatchces[interesting],
                 QuestionType = QuestionaryCasesProvider.QuestionTypesStrings[QuestionaryTypes.Interestings]
             }));
 

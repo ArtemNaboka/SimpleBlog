@@ -7,6 +7,6 @@ namespace Blog.WebUI.ViewModels.QuestionariesViewModels
     {
         public HowLongReadBlog Value { get; set; }
         public Dictionary<HowLongReadBlog, string> ValuesAndLabels { get; set; } = 
-            QuestionaryCasesProvider.HowLongReadBlogValues;
+            QuestionaryCasesProvider.HowLongReadBlogStringMatches;
     }
 }
