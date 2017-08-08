@@ -1,0 +1,12 @@
+﻿@model Blog.WebUI.ViewModels.QuestionariesViewModels.QuestionaryViewModel
+
+@{
+    ViewBag.Title = "Questionary";
+}
+
+
+@(!Model.UserHasFilled 
+        ? Html.Partial("_FormPartial", Model.FillingQuestionary) 
+        : Html.Partial("_StatisticsPartial", Model.QuestionaryResults))
+
+<link rel="stylesheet" href="~/Content/questionary.css" />

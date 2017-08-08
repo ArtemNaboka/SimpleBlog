@@ -1,0 +1,43 @@
+﻿@model Blog.WebUI.ViewModels.QuestionariesViewModels.QuestionaryResultsViewModel
+
+<div class="statistic-results">
+    <h1 style="color: #000;">Questionary results</h1>
+
+    <h4>Top cities</h4>
+    @foreach (var stat in Model.CityStatistics)
+    {
+        <p>
+            <b>@stat.Answer:</b> @stat.AnsweredPercent% (@stat.AnsweredCount)
+        </p>
+    }
+
+    <hr />
+
+    <h4>Interesting statistics</h4>
+    @foreach (var stat in Model.InterestingsStatistics)
+    {
+        <p>
+            <b>@stat.Answer:</b> @stat.AnsweredPercent% (@stat.AnsweredCount)
+        </p>
+    }
+
+    <hr />
+
+    <h4>Age range statistics</h4>
+    @foreach (var stat in Model.AgeRangeStatistics)
+    {
+        <p>
+            <b>@stat.Answer:</b> @stat.AnsweredPercent% (@stat.AnsweredCount)
+        </p>
+    }
+
+    <hr />
+
+    <h4>How long users read our blog statistics</h4>
+    @foreach (var stat in Model.HowLongReadBlogStatistics)
+    {
+        <p>
+            <b>@stat.Answer:</b> @stat.AnsweredPercent% (@stat.AnsweredCount)
+        </p>
+    }
+</div>

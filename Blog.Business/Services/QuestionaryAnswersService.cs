@@ -2,9 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
+using Blog.Business.Infrastructure;
 using Blog.Business.Models.DTO;
 using Blog.Business.Models.QuestionaryAnswerModels;
 using Blog.Business.Services.Interfaces;
+using Blog.Domain.Entities;
 using Blog.Domain.Repositories.Interfaces;
 
 namespace Blog.Business.Services
@@ -18,17 +21,52 @@ namespace Blog.Business.Services
             _questionariesRepository = questionariesRepository;
         }
 
+        public async Task CreateQuestionaryAsync(QuestionaryModel model)
+        {
+            var qList = new List<QuestionaryAnswerModel>
+            {
+                new QuestionaryAnswerModel
+                {
+                    Answer = model.City,
+                    QuestionType = QuestionaryCasesProvider.QuestionTypesStrings[QuestionaryTypes.City]
+                },
+                new QuestionaryAnswerModel
+                {
+                    Answer = model.Wishes,
+                    QuestionType = QuestionaryCasesProvider.QuestionTypesStrings[QuestionaryTypes.Wishes]
+                },
+                new QuestionaryAnswerModel
+                {
+                    Answer = QuestionaryCasesProvider.AgeRangeValuesAndLabels[model.AgeRange],
+                    QuestionType = QuestionaryCasesProvider.QuestionTypesStrings[QuestionaryTypes.AgeRange]
+                },
+                new QuestionaryAnswerModel
+                {
+                    Answer = QuestionaryCasesProvider.HowLongReadBlogValues[model.HowLongReadBlog],
+                    QuestionType = QuestionaryCasesProvider.QuestionTypesStrings[QuestionaryTypes.HowLongReadBlog]
+                }
+            };
+
+            qList.AddRange(model.Interestings.Select(interesting => new QuestionaryAnswerModel
+            {
+                Answer = QuestionaryCasesProvider.InterestingsValues[interesting],
+                QuestionType = QuestionaryCasesProvider.QuestionTypesStrings[QuestionaryTypes.Interestings]
+            }));
+
+            await AddRangeAsync(qList);
+        }
+
         public async Task<QuestionaryResults> GetStatistics()
         {
             var qResults = new QuestionaryResults();
-            var grouped = (await _questionariesRepository.GetItemsAsync()).GroupBy(q => q.QuestionType);
+            var grouped = (await _questionariesRepository.GetItemsAsync()).GroupBy(q => q.QuestionType).ToList();
 
-            qResults.CityStatistics = GetStatisticsForGroup(grouped, QuestionaryCases.QuestionaryTypes.City);
+            qResults.CityStatistics = GetStatisticsForGroup(grouped, QuestionaryTypes.City);
             qResults.InterestingsStatistics = GetStatisticsForGroup(grouped,
-                QuestionaryCases.QuestionaryTypes.Interestings);
-            qResults.AgeRangeStatistics = GetStatisticsForGroup(grouped, QuestionaryCases.QuestionaryTypes.AgeRange);
+                QuestionaryTypes.Interestings);
+            qResults.AgeRangeStatistics = GetStatisticsForGroup(grouped, QuestionaryTypes.AgeRange);
             qResults.HowLongReadBlogStatistics = GetStatisticsForGroup(grouped,
-                QuestionaryCases.QuestionaryTypes.HowLongReadBlog);
+                QuestionaryTypes.HowLongReadBlog);
 
 
             return qResults;
@@ -37,7 +75,7 @@ namespace Blog.Business.Services
         public async Task AddAsync(QuestionaryAnswerModel questionary)
         {
             questionary.AnsweredCount = 1;
-            await _questionariesRepository.AddAsync(questionary);
+            await _questionariesRepository.AddAsync(Mapper.Map<QuestionaryAnswerModel, QuestionaryAnswer>(questionary));
         }
 
         public async Task AddRangeAsync(IEnumerable<QuestionaryAnswerModel> answers)
@@ -52,10 +90,10 @@ namespace Blog.Business.Services
         #region Privates
 
         private IEnumerable<Statistics> GetStatisticsForGroup(
-            IEnumerable<IGrouping<string, QuestionaryAnswerModel>> grouped,
-            QuestionaryCases.QuestionaryTypes type)
+            IEnumerable<IGrouping<string, QuestionaryAnswer>> grouped,
+            QuestionaryTypes type)
         {
-            var groupedByType = grouped.Where(g => g.Key == type.ToString());
+            var groupedByType = grouped.Where(g => g.Key == QuestionaryCasesProvider.QuestionTypesStrings[type]);
             var result = new List<Statistics>();
             foreach (var groupedItem in groupedByType)
             {
@@ -69,6 +107,15 @@ namespace Blog.Business.Services
                 }));
             }
             return result;
+        }
+
+        private QuestionaryAnswerModel GetQuestionaryAnswerModel(string answer, string questionType)
+        {
+            return new QuestionaryAnswerModel
+            {
+                Answer = answer,
+                QuestionType = questionType
+            };
         }
 
         #endregion

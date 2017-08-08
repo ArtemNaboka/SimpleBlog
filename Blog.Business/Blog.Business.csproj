@@ -48,10 +48,13 @@
   <ItemGroup>
     <Compile Include="Infrastructure\AutomapperConfiguration.cs" />
     <Compile Include="Infrastructure\DI\ServiceModule.cs" />
+    <Compile Include="Infrastructure\Enums.cs" />
+    <Compile Include="Infrastructure\QuestionaryCasesProvider.cs" />
     <Compile Include="Models\DTO\ArticleModel.cs" />
     <Compile Include="Models\DTO\Base\BaseModel.cs" />
     <Compile Include="Models\DTO\CommentModel.cs" />
     <Compile Include="Models\DTO\QuestionaryAnswerModel.cs" />
+    <Compile Include="Models\QuestionaryAnswerModels\QuestionaryModel.cs" />
     <Compile Include="Models\QuestionaryAnswerModels\QuestionaryResults.cs" />
     <Compile Include="Models\QuestionaryAnswerModels\Statistics.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
