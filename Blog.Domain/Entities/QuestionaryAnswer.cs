@@ -3,6 +3,11 @@ using Blog.Domain.Entities.Base;
 
 namespace Blog.Domain.Entities
 {
+    /// <summary>
+    /// The class representing a single answer to a questionary.
+    /// Example: City (question type) - New York (answer) - 20 (people chose this answer)
+    /// </summary>
+
     [Table("Questionaries")]
     public class QuestionaryAnswer : BaseEntity
     {

@@ -3,6 +3,10 @@ using Blog.Business.Infrastructure;
 
 namespace Blog.Business.Models.QuestionaryAnswerModels
 {
+    /// <summary>
+    /// The class representing a full questionary.
+    /// It will be divided into questionary answers.
+    /// </summary>
     public class QuestionaryModel
     {
         public string City { get; set; }

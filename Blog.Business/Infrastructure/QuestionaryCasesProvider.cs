@@ -2,6 +2,10 @@
 
 namespace Blog.Business.Infrastructure
 {
+    /// <summary>
+    /// The class that provides string matches for enums.
+    /// This strings are used in domain layer
+    /// </summary>
     public static class QuestionaryCasesProvider
     {
         public static Dictionary<QuestionaryTypes, string> QuestionTypesStrings => new Dictionary<QuestionaryTypes, string>

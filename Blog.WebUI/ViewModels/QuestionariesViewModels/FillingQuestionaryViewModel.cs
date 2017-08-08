@@ -4,6 +4,9 @@ using Blog.Business.Infrastructure;
 
 namespace Blog.WebUI.ViewModels.QuestionariesViewModels
 {
+    /// <summary>
+    /// View model for questionary form
+    /// </summary>
     public class FillingQuestionaryViewModel
     {
         [Required]
