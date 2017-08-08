@@ -27,6 +27,5 @@ namespace Blog.WebUI.ViewModels.QuestionariesViewModels
 
         [Display(Name = "Your interestings")]
         public InterestingsViewModel Interestings { get; set; } = new InterestingsViewModel();
-        public IEnumerable<InterestingTypes> InterestingsValues { get; set; }
     }
 }

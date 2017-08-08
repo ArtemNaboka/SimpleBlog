@@ -20,7 +20,7 @@ namespace Blog.WebUI.Infrastructure
                 cfg.CreateMap<FillingQuestionaryViewModel, QuestionaryModel>()
                     .ForMember(q => q.AgeRange, x => x.MapFrom(f => f.AgeRange.Value))
                     .ForMember(q => q.HowLongReadBlog, x => x.MapFrom(f => f.HowLongReadBlog.Value))
-                    .ForMember(q => q.Interestings, x => x.MapFrom(f => f.InterestingsValues));
+                    .ForMember(q => q.Interestings, x => x.MapFrom(f => f.Interestings.InterestingsValues));
             });
         }
     }

@@ -19,7 +19,7 @@ namespace Blog.Business.Infrastructure
 
         public static Dictionary<AgeRange, string> AgeRangeStringMatches => new Dictionary<AgeRange, string>
         {
-            [AgeRange.LessThanEighteen] = "> 18",
+            [AgeRange.LessThanEighteen] = "< 18",
             [AgeRange.BetweenEighteenAndFourtyFive] = "18-45",
             [AgeRange.BetweenFourtySixAndSixty] = "46-60",
             [AgeRange.MoreThanSixty] = "60 <"
@@ -27,9 +27,9 @@ namespace Blog.Business.Infrastructure
 
         public static Dictionary<HowLongReadBlog, string> HowLongReadBlogStringMatches => new Dictionary<HowLongReadBlog, string>
         {
-            [HowLongReadBlog.LessThanOneYear] = "> 1",
-            [HowLongReadBlog.FromOneToTwoYears] = "1-2",
-            [HowLongReadBlog.MoreThanThreeYears] = "3 <"
+            [HowLongReadBlog.LessThanOneYear] = "< 1 year",
+            [HowLongReadBlog.FromOneToTwoYears] = "1-2 years",
+            [HowLongReadBlog.MoreThanThreeYears] = "3 years <"
         };
 
         public static Dictionary<InterestingTypes, string> InterestingsStringMatchces => new Dictionary<InterestingTypes, string>

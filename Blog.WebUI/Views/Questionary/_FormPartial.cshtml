@@ -32,20 +32,9 @@
             <div class="col-md-10">
                 @foreach (var interesting in Model.Interestings.ValuesAndLabels)
                 {
-                    <input type="checkbox" name="interestingsValues" value="@interesting.Key" />
-                    @Html.Label($"{interesting.Value}")
+                    <input type="checkbox" id="@interesting.Key" name="Interestings.InterestingsValues" value="@interesting.Key" />
+                    @Html.Label($"{interesting.Key}", $"{interesting.Value}")
                 }
-                @*@Html.CheckBoxFor(model => model.Interestings.ManyCodeExamples)
-                @Html.LabelFor(model => model.Interestings.ManyCodeExamples)
-
-                @Html.CheckBoxFor(model => model.Interestings.ExpiriencedAuthors)
-                @Html.LabelFor(model => model.Interestings.ExpiriencedAuthors)
-
-                @Html.CheckBoxFor(model => model.Interestings.RelevantTechnologies)
-                @Html.LabelFor(model => model.Interestings.RelevantTechnologies)
-
-                @Html.CheckBoxFor(model => model.Interestings.Other)
-                @Html.LabelFor(model => model.Interestings.Other)*@
             </div>
         </div>
 
