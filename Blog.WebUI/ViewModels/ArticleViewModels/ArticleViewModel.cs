@@ -14,6 +14,7 @@ namespace Blog.WebUI.ViewModels.ArticleViewModels
         public DateTime PublishDate { get; set; }
 
         [Required]
+        [DataType(DataType.MultilineText)]
         public string Text { get; set; }
 
         [DataType(DataType.MultilineText)]

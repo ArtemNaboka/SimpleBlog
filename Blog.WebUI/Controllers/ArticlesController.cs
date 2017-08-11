@@ -70,10 +70,13 @@ namespace Blog.WebUI.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "Id,Name,Text")] ArticleViewModel article)
+        public async Task<ActionResult> Create(ArticleViewModel article)
         {
             if (ModelState.IsValid)
             {
+                article.Name = RemoveExtraSpaces(article.Name);
+                article.Text = RemoveExtraSpaces(article.Text);
+                article.PublishDate = DateTime.UtcNow;
                 await _articlesService.CreateAsync(Mapper.Map<ArticleViewModel, ArticleModel>(article));
                 return RedirectToAction("Index");
             }
@@ -104,7 +107,8 @@ namespace Blog.WebUI.Controllers
         {
             if (ModelState.IsValid)
             {
-                article.PublishDate = DateTime.UtcNow;
+                article.Name = RemoveExtraSpaces(article.Name);
+                article.Text = RemoveExtraSpaces(article.Text);
                 await _articlesService.UpdateAsync(Mapper.Map<ArticleViewModel, ArticleModel>(article));
                 return RedirectToAction("Index");
             }
@@ -138,6 +142,13 @@ namespace Blog.WebUI.Controllers
         }
 
         #region Helpers
+
+        private static string RemoveExtraSpaces(string text)
+        {
+            var arr = text.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+            var resultCharArr = arr.SelectMany(str => str + ' ').ToArray();
+            return new string(resultCharArr);
+        }
 
         private static string CutToLastWord(string text, int substrLength)
         {
