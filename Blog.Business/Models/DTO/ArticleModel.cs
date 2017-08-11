@@ -8,5 +8,6 @@ namespace Blog.Business.Models.DTO
         public string Name { get; set; }
         public DateTime PublishDate { get; set; }
         public string Text { get; set; }
+        public string Tags { get; set; }
     }
 }

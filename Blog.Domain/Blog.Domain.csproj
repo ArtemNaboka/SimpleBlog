@@ -56,9 +56,9 @@
     <Compile Include="Entities\Base\BaseEntity.cs" />
     <Compile Include="Entities\Comment.cs" />
     <Compile Include="Entities\QuestionaryAnswer.cs" />
-    <Compile Include="Migrations\201708081821224_Initial.cs" />
-    <Compile Include="Migrations\201708081821224_Initial.Designer.cs">
-      <DependentUpon>201708081821224_Initial.cs</DependentUpon>
+    <Compile Include="Migrations\201708111648355_Initial.cs" />
+    <Compile Include="Migrations\201708111648355_Initial.Designer.cs">
+      <DependentUpon>201708111648355_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -76,8 +76,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201708081821224_Initial.resx">
-      <DependentUpon>201708081821224_Initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201708111648355_Initial.resx">
+      <DependentUpon>201708111648355_Initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

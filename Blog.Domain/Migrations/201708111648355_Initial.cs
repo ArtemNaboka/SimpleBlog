@@ -15,6 +15,7 @@ namespace Blog.Domain.Migrations
                         Name = c.String(),
                         PublishDate = c.DateTime(nullable: false),
                         Text = c.String(),
+                        Tags = c.String(),
                     })
                 .PrimaryKey(t => t.Id);
             
