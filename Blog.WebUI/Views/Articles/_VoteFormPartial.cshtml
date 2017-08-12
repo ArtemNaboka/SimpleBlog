@@ -1,0 +1,18 @@
+﻿@model Blog.WebUI.ViewModels.VoteViewModels.CreateVoiceViewModel
+
+<div>
+    @using (Html.BeginForm("MakeVote", "Articles"))
+    {
+        var i = 1;
+        <p>What technology to devote the following articles to?</p>
+        foreach (var answer in Model.RadioAnswersAndLabels)
+        {
+            <div>
+                @Html.RadioButton(nameof(answer), answer.Key, i++ == 1, new { id = answer.Key })
+                @Html.Label(answer.Key.ToString(), answer.Value)
+            </div>
+        }
+
+        <button type="submit" id="voteBtn">Vote</button>
+    }
+</div>

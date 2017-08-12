@@ -48,5 +48,13 @@ namespace Blog.Business.Infrastructure
         Other
     }
 
+    public enum NetTechnologies
+    {
+        AspNetMvc,
+        Wcf,
+        Wpf,
+        WebApi
+    }
+
     #endregion
 }

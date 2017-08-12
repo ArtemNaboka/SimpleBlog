@@ -32,6 +32,7 @@ namespace Blog.WebUI.Util
             _kernel.Bind<IArticlesService>().To<ArticlesService>();
             _kernel.Bind<ICommentsService>().To<CommentsService>();
             _kernel.Bind<IQuestionaryAnswersService>().To<QuestionaryAnswersService>();
+            _kernel.Bind<IVoteService>().To<VoteService>();
         }
     }
 }

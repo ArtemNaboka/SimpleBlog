@@ -22,3 +22,10 @@ else
 {
     <h3>There are no articles yet</h3>
 }
+
+@section Vote
+{
+    @(!Model.UserHasVoted 
+    ? Html.Partial("_VoteFormPartial", Model.Voice) 
+    : Html.Partial("_VoteResultsPartial", Model.VoteResults))
+}

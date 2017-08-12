@@ -183,6 +183,7 @@
     <Compile Include="ViewModels\QuestionariesViewModels\InterestingsViewModel.cs" />
     <Compile Include="ViewModels\QuestionariesViewModels\QuestionaryResultsViewModel.cs" />
     <Compile Include="ViewModels\QuestionariesViewModels\QuestionaryViewModel.cs" />
+    <Compile Include="ViewModels\VoteViewModels\CreateVoiceViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -209,6 +210,7 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\vote.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -233,6 +235,9 @@
     <Content Include="Views\Questionary\Index.cshtml" />
     <Content Include="Views\Questionary\_FormPartial.cshtml" />
     <Content Include="Views\Questionary\_StatisticsPartial.cshtml" />
+    <Compile Include="ViewModels\VoteViewModels\VoteResultsViewModel.cs" />
+    <Content Include="Views\Articles\_VoteResultsPartial.cshtml" />
+    <Content Include="Views\Articles\_VoteFormPartial.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

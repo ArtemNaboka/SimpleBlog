@@ -4,23 +4,42 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 using System.Web.Mvc;
 using AutoMapper;
+using Blog.Business.Infrastructure;
 using Blog.Business.Models.DTO;
+using Blog.Business.Models.VoteModels;
 using Blog.Business.Services.Interfaces;
 using Blog.WebUI.ViewModels.ArticleViewModels;
+using Blog.WebUI.ViewModels.VoteViewModels;
 
 namespace Blog.WebUI.Controllers
 {
     public class ArticlesController : Controller
     {
         private const int SymbolsForPreviewShow = 200;
+        private const string HasVotedCookieString = "HasVoted";
+
+
+        private static Dictionary<NetTechnologies, string> StringLabelForTechnologies => new Dictionary<NetTechnologies, string>
+        {
+            [NetTechnologies.AspNetMvc] = "ASP.NET MVC",
+            [NetTechnologies.Wcf] = "WCF",
+            [NetTechnologies.Wpf] = "WPF",
+            [NetTechnologies.WebApi] = "Web Api"
+        }; 
+
 
         private readonly IArticlesService _articlesService;
+        private readonly IVoteService _voteService;
 
-        public ArticlesController(IArticlesService articlesService)
+        public ArticlesController(
+            IArticlesService articlesService,
+            IVoteService voteService)
         {
             _articlesService = articlesService;
+            _voteService = voteService;
         }
 
         [HttpGet]
@@ -29,7 +48,15 @@ namespace Blog.WebUI.Controllers
             var articlesViewModel = new ArticlesListViewModel
             {
                 Articles = Mapper.Map<IEnumerable<ArticleModel>, IEnumerable<ArticleViewModel>>
-                                                            (await _articlesService.GetArticlesAsync())
+                                                            (await _articlesService.GetArticlesAsync()),
+
+                UserHasVoted = HttpContext.Request.Cookies[HasVotedCookieString] != null,
+
+
+                Voice = new CreateVoiceViewModel
+                {
+                    RadioAnswersAndLabels = StringLabelForTechnologies
+                }
             };
 
             foreach (var article in articlesViewModel.Articles)
@@ -139,6 +166,19 @@ namespace Blog.WebUI.Controllers
         {
             await _articlesService.RemoveAsync(id);
             return RedirectToAction("Index");
+        }
+
+        public async Task<ActionResult> MakeVote(CreateVoiceViewModel voice)
+        {
+            if (voice == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            await _voteService.AddVoice(Mapper.Map<CreateVoiceViewModel, VoiceModel>(voice));
+            HttpContext.Response.Cookies.Add(new HttpCookie("HasVoted", bool.TrueString));
+
+            return RedirectToAction(nameof(Index));
         }
 
         #region Helpers
