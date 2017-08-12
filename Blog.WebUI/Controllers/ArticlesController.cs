@@ -56,6 +56,11 @@ namespace Blog.WebUI.Controllers
                 Voice = new CreateVoiceViewModel
                 {
                     RadioAnswersAndLabels = StringLabelForTechnologies
+                },
+
+                VoteResults = new VoteResultsViewModel
+                {
+                    Results = await _voteService.GetVoteResults()
                 }
             };
 

@@ -1,8 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using Blog.Business.Infrastructure;
 using Blog.Business.Models.DTO;
+using Blog.Business.Models.QuestionaryAnswerModels;
 using Blog.Business.Models.VoteModels;
 using Blog.Business.Services.Interfaces;
 using Blog.Domain.Entities;
@@ -13,13 +16,15 @@ namespace Blog.Business.Services
     public class VoteService : IVoteService
     {
         private const string VoteTypeStringValue = "Technology for articles";
-        private static Dictionary<NetTechnologies, string> StringTechnologiesMathces => new Dictionary<NetTechnologies, string>
-        {
-            [NetTechnologies.AspNetMvc] = "ASP.NET MVC",
-            [NetTechnologies.Wcf] = "WCF",
-            [NetTechnologies.Wpf] = "WPF",
-            [NetTechnologies.WebApi] = "Web Api"
-        };
+
+        private static Dictionary<NetTechnologies, string> StringTechnologiesMathces
+            => new Dictionary<NetTechnologies, string>
+            {
+                [NetTechnologies.AspNetMvc] = "ASP.NET MVC",
+                [NetTechnologies.Wcf] = "WCF",
+                [NetTechnologies.Wpf] = "WPF",
+                [NetTechnologies.WebApi] = "Web Api"
+            };
 
         private readonly IQuestionaryAnswersRepository _questionaryAnswersRepository;
 
@@ -47,6 +52,23 @@ namespace Blog.Business.Services
 
             await _questionaryAnswersRepository.AddAsync(
                 Mapper.Map<QuestionaryAnswerModel, QuestionaryAnswer>(qAnswer));
+        }
+
+        public async Task<IEnumerable<Statistics>> GetVoteResults()
+        {
+            var voices = await _questionaryAnswersRepository
+                .GetItemsAsync(qs => qs.Where(q => q.QuestionType == VoteTypeStringValue));
+
+            var generalAnsweredCount = voices.Select(v => v.AnsweredCount).Sum();
+
+            var statisticsList = voices.Select(v => new Statistics
+            {
+                Answer = v.Answer,
+                AnsweredCount = v.AnsweredCount,
+                AnsweredPercent = (int)Math.Round((double)v.AnsweredCount / generalAnsweredCount * 100)
+            });
+
+            return statisticsList;
         }
     }
 }
