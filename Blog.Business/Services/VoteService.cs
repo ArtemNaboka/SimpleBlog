@@ -26,6 +26,9 @@ namespace Blog.Business.Services
                 [NetTechnologies.WebApi] = "Web Api"
             };
 
+
+        /// We can use our existing table to store there
+        /// vote results
         private readonly IQuestionaryAnswersRepository _questionaryAnswersRepository;
 
         public VoteService(IQuestionaryAnswersRepository questionaryAnswersRepository)
