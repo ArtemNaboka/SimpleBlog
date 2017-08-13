@@ -5,5 +5,8 @@
     @foreach (var answer in Model.Results)
     {
         <p><strong>@answer.Answer</strong>: @answer.AnsweredPercent%</p>
+        <div class="result-line">
+            <div style="width: @answer.AnsweredPercent%" class="percent-line"></div>
+        </div>
     }
 </div>
