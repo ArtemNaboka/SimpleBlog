@@ -186,6 +186,29 @@ namespace Blog.WebUI.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        public async Task<ActionResult> MakeVoteAjax(CreateVoiceViewModel voice)
+        {
+            if (voice == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            await _voteService.AddVoice(Mapper.Map<CreateVoiceViewModel, VoiceModel>(voice));
+            HttpContext.Response.Cookies.Add(new HttpCookie("HasVoted", bool.TrueString));
+
+            return await GetVotePartialView();
+        }
+
+        private async Task<ActionResult> GetVotePartialView()
+        {
+            var voteResults = new VoteResultsViewModel
+            {
+                Results = await _voteService.GetVoteResults()
+            };
+
+            return PartialView("_VoteResultsPartial", voteResults);
+        }
+
         #region Helpers
 
         private static string RemoveExtraSpaces(string text)

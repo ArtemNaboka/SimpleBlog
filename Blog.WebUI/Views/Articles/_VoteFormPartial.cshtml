@@ -1,6 +1,6 @@
 ﻿@model Blog.WebUI.ViewModels.VoteViewModels.CreateVoiceViewModel
 
-<div class="vote-form-container">
+<div id="voteDiv" class="vote-form-container">
     @using (Html.BeginForm("MakeVote", "Articles"))
     {
         var i = 1;
@@ -13,6 +13,6 @@
             </div>
         }
 
-        <button type="submit" class="btn btn-primary" id="voteBtn">Vote</button>
+        <button type="button" class="btn btn-primary" id="voteBtn">Vote</button>
     }
 </div>

@@ -7,14 +7,10 @@
 
         $.ajax({
             type: "POST",
-            url: "/Articles/MakeVote",
+            url: "/Articles/MakeVoteAjax",
             data: voice,
-            success: function(isOk) {
-                if (isOk) {
-                    
-                } else {
-                    alert("Error during vote. Try to reload the page");
-                }
+            success: function(data) {
+                $("#voteDiv").replaceWith(data);
             },
             error: function() {
                 alert("Error during vote. Try to reload the page");
