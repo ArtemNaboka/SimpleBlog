@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using AutoMapper;
 using Blog.Business.Infrastructure;
 using Blog.Business.Models.DTO;
-using Blog.Business.Models.QuestionaryAnswerModels;
 using Blog.Business.Models.VoteModels;
 using Blog.Business.Services.Interfaces;
 using Blog.Domain.Entities;
@@ -57,19 +56,20 @@ namespace Blog.Business.Services
                 Mapper.Map<QuestionaryAnswerModel, QuestionaryAnswer>(qAnswer));
         }
 
-        public async Task<IEnumerable<Statistics>> GetVoteResults()
+        public async Task<IEnumerable<VoteAnswerStatistics>> GetVoteResults()
         {
             var voices = await _questionaryAnswersRepository
                 .GetItemsAsync(qs => qs.Where(q => q.QuestionType == VoteTypeStringValue));
 
             var generalAnsweredCount = voices.Select(v => v.AnsweredCount).Sum();
 
-            var statisticsList = voices.Select(v => new Statistics
+            var statisticsList = voices.Select(v => new VoteAnswerStatistics()
             {
-                Answer = v.Answer,
+                Answer = StringTechnologiesMathces.GetKeyByValue(v.Answer),
                 AnsweredCount = v.AnsweredCount,
                 AnsweredPercent = (int)Math.Round((double)v.AnsweredCount / generalAnsweredCount * 100)
-            });
+            })
+            .OrderBy(s => s.Answer).ToList();
 
             return statisticsList;
         }

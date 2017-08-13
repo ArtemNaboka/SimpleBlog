@@ -9,6 +9,6 @@ namespace Blog.Business.Services.Interfaces
     public interface IVoteService : IService<QuestionaryAnswerModel>
     {
         Task AddVoice(VoiceModel answer);
-        Task<IEnumerable<Statistics>> GetVoteResults();
+        Task<IEnumerable<VoteAnswerStatistics>> GetVoteResults();
     }
 }

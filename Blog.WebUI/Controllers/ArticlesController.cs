@@ -9,6 +9,7 @@ using System.Web.Mvc;
 using AutoMapper;
 using Blog.Business.Infrastructure;
 using Blog.Business.Models.DTO;
+using Blog.Business.Models.QuestionaryAnswerModels;
 using Blog.Business.Models.VoteModels;
 using Blog.Business.Services.Interfaces;
 using Blog.WebUI.ViewModels.ArticleViewModels;
@@ -57,12 +58,16 @@ namespace Blog.WebUI.Controllers
                 {
                     RadioAnswersAndLabels = StringLabelForTechnologies
                 },
-
-                VoteResults = new VoteResultsViewModel
-                {
-                    Results = await _voteService.GetVoteResults()
-                }
             };
+
+            if (articlesViewModel.UserHasVoted)
+            {
+                var voteResults = await _voteService.GetVoteResults();
+                articlesViewModel.VoteResults = new VoteResultsViewModel
+                {
+                    Results = VoteAnswersToStatistics(voteResults)
+                };
+            }
 
             foreach (var article in articlesViewModel.Articles)
             {
@@ -201,9 +206,10 @@ namespace Blog.WebUI.Controllers
 
         private async Task<ActionResult> GetVotePartialView()
         {
+            var answerStatistics = await _voteService.GetVoteResults();
             var voteResults = new VoteResultsViewModel
             {
-                Results = await _voteService.GetVoteResults()
+                Results = VoteAnswersToStatistics(answerStatistics)
             };
 
             return PartialView("_VoteResultsPartial", voteResults);
@@ -230,6 +236,21 @@ namespace Blog.WebUI.Controllers
 
             sb.Append("...");
             return sb.ToString();
+        }
+
+        private static Statistics VoteAnswerToStatistics(VoteAnswerStatistics answer)
+        {
+            return new Statistics
+            {
+                Answer = StringLabelForTechnologies[answer.Answer],
+                AnsweredCount = answer.AnsweredCount,
+                AnsweredPercent = answer.AnsweredPercent
+            };
+        }
+
+        private static IEnumerable<Statistics> VoteAnswersToStatistics(IEnumerable<VoteAnswerStatistics> answer)
+        {
+            return answer.Select(VoteAnswerToStatistics);
         }
 
         #endregion
