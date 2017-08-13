@@ -1,0 +1,10 @@
+﻿.vote-header {
+    font-size: 16px;
+    font-weight: bold;
+    text-align: justify;
+}
+
+.vote-form-container, .vote-results {
+    margin-top: 30px;
+    margin-left: 20px;
+}

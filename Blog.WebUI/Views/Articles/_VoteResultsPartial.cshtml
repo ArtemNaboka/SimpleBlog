@@ -1,9 +1,9 @@
 ﻿@model Blog.WebUI.ViewModels.VoteViewModels.VoteResultsViewModel
 
-<div>
-    <p>What technology to devote the following articles to?</p>
+<div class="vote-results">
+    <p class="vote-header">What technology to devote the following articles to?</p>
     @foreach (var answer in Model.Results)
     {
-        <p>@answer.Answer: @answer.AnsweredPercent%</p>
+        <p><strong>@answer.Answer</strong>: @answer.AnsweredPercent%</p>
     }
 </div>

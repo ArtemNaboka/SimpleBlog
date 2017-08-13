@@ -1,10 +1,10 @@
 ﻿@model Blog.WebUI.ViewModels.VoteViewModels.CreateVoiceViewModel
 
-<div>
+<div class="vote-form-container">
     @using (Html.BeginForm("MakeVote", "Articles"))
     {
         var i = 1;
-        <p>What technology to devote the following articles to?</p>
+        <p class="vote-header">What technology to devote the following articles to?</p>
         foreach (var answer in Model.RadioAnswersAndLabels)
         {
             <div>
@@ -13,6 +13,6 @@
             </div>
         }
 
-        <button type="submit" id="voteBtn">Vote</button>
+        <button type="submit" class="btn btn-primary" id="voteBtn">Vote</button>
     }
 </div>

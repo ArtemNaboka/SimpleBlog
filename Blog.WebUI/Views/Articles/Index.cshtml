@@ -26,6 +26,8 @@ else
 @section Vote
 {
     @(!Model.UserHasVoted 
-    ? Html.Partial("_VoteFormPartial", Model.Voice) 
-    : Html.Partial("_VoteResultsPartial", Model.VoteResults))
+        ? Html.Partial("_VoteFormPartial", Model.Voice) 
+          : Html.Partial("_VoteResultsPartial", Model.VoteResults))
+    
+    <link rel="stylesheet" href="~/Content/vote.css"/>
 }

@@ -190,6 +190,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\comments.css" />
     <Content Include="Content\questionary.css" />
+    <Content Include="Content\vote.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
