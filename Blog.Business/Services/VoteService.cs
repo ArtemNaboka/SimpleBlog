@@ -67,7 +67,7 @@ namespace Blog.Business.Services
             {
                 Answer = StringTechnologiesMathces.GetKeyByValue(v.Answer),
                 AnsweredCount = v.AnsweredCount,
-                AnsweredPercent = (int)Math.Round((double)v.AnsweredCount / generalAnsweredCount * 100)
+                AnsweredPercent = (double)v.AnsweredCount / generalAnsweredCount * 100      //Math.Round((double)v.AnsweredCount / generalAnsweredCount * 100)
             })
             .OrderBy(s => s.Answer).ToList();
 

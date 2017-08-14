@@ -103,7 +103,7 @@ namespace Blog.Business.Services
                 {
                     Answer = ageRangesAnswer.Answer,
                     AnsweredCount = ageRangesAnswer.AnsweredCount,
-                    AnsweredPercent = (int)Math.Round((double)ageRangesAnswer.AnsweredCount / generalAnsweredCount * 100)
+                    AnsweredPercent = Math.Round((double)ageRangesAnswer.AnsweredCount / generalAnsweredCount * 100)
                 }));
             }
             return result;

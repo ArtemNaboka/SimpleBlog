@@ -6,6 +6,6 @@ namespace Blog.Business.Models.VoteModels
     {
         public NetTechnologies Answer { get; set; }
         public int AnsweredCount { get; set; }
-        public int AnsweredPercent { get; set; }
+        public double AnsweredPercent { get; set; }
     }
 }
