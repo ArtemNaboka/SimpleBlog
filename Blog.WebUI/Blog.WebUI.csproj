@@ -186,6 +186,7 @@
     <Compile Include="ViewModels\VoteViewModels\CreateVoiceViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\article-details.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\comments.css" />

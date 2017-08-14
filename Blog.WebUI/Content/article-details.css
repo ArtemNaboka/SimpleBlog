@@ -1,0 +1,14 @@
+﻿.details {
+    background-color: #F5DEB3;
+    padding: 15px 45px;
+}
+
+.article-content {
+    margin-top: 40px;
+    text-align: justify;
+    font-size: 18px;
+}
+
+.article-header {
+    text-align: center;
+}
