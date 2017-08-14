@@ -8,9 +8,11 @@ namespace Blog.WebUI.ViewModels.ArticleViewModels
         public int Id { get; set; }
 
         [Required]
+        [Display(Name = "Article name")]
         public string Name { get; set; }
 
         [ScaffoldColumn(false)]
+        [Display(Name = "Date of publish")]
         public DateTime PublishDate { get; set; }
 
         [Required]

@@ -5,7 +5,7 @@
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h4>Write your comment</h4>
+        <h4>Fill in the questionary</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
@@ -17,7 +17,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.AgeRange.Value, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.AgeRange, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @foreach (var age in Model.AgeRange.ValuesAndLabels)
                 {
@@ -28,19 +28,21 @@
         </div>
 
         <div class="form-group">
-            @Html.Label("What are your interesting on this blog?", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Interestings, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @foreach (var interesting in Model.Interestings.ValuesAndLabels)
                 {
-                    <input type="checkbox" id="@interesting.Key" name="Interestings.InterestingsValues" value="@interesting.Key" />
-                    @Html.Label($"{interesting.Key}", $"{interesting.Value}")
+                    <div>
+                        <input type="checkbox" id="@interesting.Key" name="Interestings.InterestingsValues" value="@interesting.Key" />
+                        @Html.Label($"{interesting.Key}", $"{interesting.Value}")
+                    </div>
                 }
             </div>
         </div>
 
 
         <div class="form-group">
-            @Html.LabelFor(model => model.HowLongReadBlog.Value, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.HowLongReadBlog, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @foreach (var age in Model.HowLongReadBlog.ValuesAndLabels)
                 {
