@@ -59,8 +59,6 @@ namespace Blog.Business.Services
 
         public async Task<IEnumerable<TagModel>> GetArticleTags(int articleId)
         {
-            //var article = await _articlesRepository.GetItemAsync(articleId);
-            //var tags = article.ArticleTags.Select(at => at.Tag);
             var tags = (await _articleTagsRepository.GetItemsAsync(ats => ats.Where(at => at.ArticleId == articleId)))
                 .Select(at => at.Tag);
             return Mapper.Map<IEnumerable<Tag>, IEnumerable<TagModel>>(tags);
