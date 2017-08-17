@@ -1,5 +1,6 @@
 ﻿using System;
-using System.ComponentModel.DataAnnotations;
+using System.Collections.Generic;
+using Blog.Business.Models.DTO;
 
 namespace Blog.WebUI.ViewModels.ArticleViewModels
 {
@@ -7,19 +8,12 @@ namespace Blog.WebUI.ViewModels.ArticleViewModels
     {
         public int Id { get; set; }
 
-        [Required]
-        [Display(Name = "Article name")]
         public string Name { get; set; }
 
-        [ScaffoldColumn(false)]
-        [Display(Name = "Date of publish")]
         public DateTime PublishDate { get; set; }
 
-        [Required]
-        [DataType(DataType.MultilineText)]
         public string Text { get; set; }
 
-        [DataType(DataType.MultilineText)]
-        public string Tags { get; set; }
+        public ICollection<TagModel> Tags { get; set; }
     }
 }

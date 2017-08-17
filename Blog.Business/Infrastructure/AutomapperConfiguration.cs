@@ -11,6 +11,8 @@ namespace Blog.Business.Infrastructure
             cfg.CreateMap<Article, ArticleModel>().ReverseMap();
             cfg.CreateMap<Comment, CommentModel>().ReverseMap();
             cfg.CreateMap<QuestionaryAnswer, QuestionaryAnswerModel>().ReverseMap();
+            cfg.CreateMap<Tag, TagModel>().ReverseMap();
+            cfg.CreateMap<ArticleTag, ArticleTagModel>().ReverseMap();
         }
     }
 }

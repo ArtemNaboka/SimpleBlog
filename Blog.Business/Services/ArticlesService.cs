@@ -13,10 +13,14 @@ namespace Blog.Business.Services
     public class ArticlesService : IArticlesService
     {
         private readonly IArticlesRepository _articlesRepository;
+        private readonly IArticleTagsRepository _articleTagsRepository;
 
-        public ArticlesService(IArticlesRepository articlesRepository)
+        public ArticlesService(
+            IArticlesRepository articlesRepository,
+            IArticleTagsRepository articleTagsRepository)
         {
             _articlesRepository = articlesRepository;
+            _articleTagsRepository = articleTagsRepository;
         }
 
         public async Task<IEnumerable<ArticleModel>> GetArticlesAsync()
@@ -51,6 +55,15 @@ namespace Blog.Business.Services
         public async Task RemoveAsync(int articleId)
         {
             await _articlesRepository.RemoveAsync(articleId);
+        }
+
+        public async Task<IEnumerable<TagModel>> GetArticleTags(int articleId)
+        {
+            //var article = await _articlesRepository.GetItemAsync(articleId);
+            //var tags = article.ArticleTags.Select(at => at.Tag);
+            var tags = (await _articleTagsRepository.GetItemsAsync(ats => ats.Where(at => at.ArticleId == articleId)))
+                .Select(at => at.Tag);
+            return Mapper.Map<IEnumerable<Tag>, IEnumerable<TagModel>>(tags);
         }
     }
 }

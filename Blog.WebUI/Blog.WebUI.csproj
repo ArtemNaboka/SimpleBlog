@@ -25,6 +25,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -175,6 +176,7 @@
     <Compile Include="Util\NinjectDependencyResolver.cs" />
     <Compile Include="ViewModels\ArticleViewModels\ArticlesListViewModel.cs" />
     <Compile Include="ViewModels\ArticleViewModels\ArticleViewModel.cs" />
+    <Compile Include="ViewModels\ArticleViewModels\CreateArticleViewModel.cs" />
     <Compile Include="ViewModels\CommentViewModels\CommentsListViewModel.cs" />
     <Compile Include="ViewModels\CommentViewModels\CommentViewModel.cs" />
     <Compile Include="ViewModels\QuestionariesViewModels\AgeRangeViewModel.cs" />

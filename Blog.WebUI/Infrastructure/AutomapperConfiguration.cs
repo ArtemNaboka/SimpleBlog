@@ -16,6 +16,7 @@ namespace Blog.WebUI.Infrastructure
             Mapper.Initialize(cfg =>
             {
                 Business.Infrastructure.AutomapperConfiguration.Configure(cfg);
+                cfg.CreateMap<ArticleModel, CreateArticleViewModel>().ReverseMap();
                 cfg.CreateMap<ArticleModel, ArticleViewModel>().ReverseMap();
                 cfg.CreateMap<CommentModel, CommentViewModel>().ReverseMap();
                 cfg.CreateMap<QuestionaryResults, QuestionaryResultsViewModel>();

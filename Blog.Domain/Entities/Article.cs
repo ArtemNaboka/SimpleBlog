@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Blog.Domain.Entities.Base;
 
 namespace Blog.Domain.Entities
@@ -8,6 +9,7 @@ namespace Blog.Domain.Entities
         public string Name { get; set; }
         public DateTime PublishDate { get; set; }
         public string Text { get; set; }
-        public string Tags { get; set; }
+
+        public IList<ArticleTag> ArticleTags { get; set; }
     }
 }

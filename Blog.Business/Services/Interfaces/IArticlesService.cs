@@ -13,5 +13,6 @@ namespace Blog.Business.Services.Interfaces
         Task CreateAsync(ArticleModel article);
         Task UpdateAsync(ArticleModel article);
         Task RemoveAsync(int articleId);
+        Task<IEnumerable<TagModel>> GetArticleTags(int articleId);
     }
 }

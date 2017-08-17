@@ -61,10 +61,12 @@
     <Compile Include="Infrastructure\Enums.cs" />
     <Compile Include="Infrastructure\QuestionaryCasesProvider.cs" />
     <Compile Include="Models\DTO\ArticleModel.cs" />
+    <Compile Include="Models\DTO\ArticleTagModel.cs" />
     <Compile Include="Models\DTO\Base\BaseModel.cs" />
     <Compile Include="Models\DTO\CommentModel.cs" />
     <Compile Include="Models\DTO\QuestionaryAnswerModel.cs" />
     <Compile Include="Infrastructure\Extensions.cs" />
+    <Compile Include="Models\DTO\TagModel.cs" />
     <Compile Include="Models\QuestionaryAnswerModels\QuestionaryModel.cs" />
     <Compile Include="Models\QuestionaryAnswerModels\QuestionaryResults.cs" />
     <Compile Include="Models\QuestionaryAnswerModels\Statistics.cs" />
@@ -77,8 +79,10 @@
     <Compile Include="Services\Interfaces\ICommentsService.cs" />
     <Compile Include="Services\Interfaces\IQuestionaryAnswersService.cs" />
     <Compile Include="Services\Interfaces\IService.cs" />
+    <Compile Include="Services\Interfaces\ITagsService.cs" />
     <Compile Include="Services\Interfaces\IVoteService.cs" />
     <Compile Include="Services\QuestionaryAnswersService.cs" />
+    <Compile Include="Services\TagsService.cs" />
     <Compile Include="Services\VoteService.cs" />
   </ItemGroup>
   <ItemGroup>

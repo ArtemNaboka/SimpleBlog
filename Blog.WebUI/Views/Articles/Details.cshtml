@@ -8,7 +8,14 @@
     <h2 class="article-header">@Model.Name</h2>
     <p class="publish-date">@Model.PublishDate</p>
     <p class="article-content">@Model.Text</p>
-    <p>Tags: <strong>@Model.Tags</strong></p>
+    <p>Tags: 
+        <strong>
+            @foreach (var tag in Model.Tags)
+            {
+                <span>@tag.Name</span>
+            }
+        </strong>
+    </p>
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |

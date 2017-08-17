@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Data.Entity;
+using System.Linq;
 using System.Linq.Expressions;
 using Blog.Domain.Contexts.Interfaces;
 using Blog.Domain.Entities;
@@ -14,6 +16,8 @@ namespace Blog.Domain.Repositories
 
         }
 
+
+        protected override IQueryable<Article> NotCachedQueryable => DbSet.Include(a => a.ArticleTags).AsNoTracking();
         protected override Expression<Func<Article, bool>> KeyPredicate(int key) => (e => e.Id == key);
     }
 }

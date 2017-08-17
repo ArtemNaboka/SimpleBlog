@@ -53,23 +53,33 @@
     <Compile Include="Contexts\BlogDbContext.cs" />
     <Compile Include="Contexts\Interfaces\IDbContext.cs" />
     <Compile Include="Entities\Article.cs" />
+    <Compile Include="Entities\ArticleTag.cs" />
     <Compile Include="Entities\Base\BaseEntity.cs" />
     <Compile Include="Entities\Comment.cs" />
     <Compile Include="Entities\QuestionaryAnswer.cs" />
+    <Compile Include="Entities\Tag.cs" />
     <Compile Include="Migrations\201708111648355_Initial.cs" />
     <Compile Include="Migrations\201708111648355_Initial.Designer.cs">
       <DependentUpon>201708111648355_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708171600134_TagMigration.cs" />
+    <Compile Include="Migrations\201708171600134_TagMigration.Designer.cs">
+      <DependentUpon>201708171600134_TagMigration.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\Base\GenericRepositoryBase.cs" />
     <Compile Include="Repositories\Interfaces\IArticlesRepository.cs" />
+    <Compile Include="Repositories\Interfaces\IArticleTagsRepository.cs" />
     <Compile Include="Repositories\Interfaces\ICommentsRepository.cs" />
     <Compile Include="Repositories\Interfaces\IGenericRepository.cs" />
     <Compile Include="Repositories\Interfaces\IQuestionaryAnswersRepository.cs" />
+    <Compile Include="Repositories\Interfaces\ITagsRepository.cs" />
     <Compile Include="Repositories\SqlArticlesRepository.cs" />
+    <Compile Include="Repositories\SqlArticleTagsRepository.cs" />
     <Compile Include="Repositories\SqlCommentsRepository.cs" />
     <Compile Include="Repositories\SqlQuestionaryAnswersRepository.cs" />
+    <Compile Include="Repositories\SqlTagsRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -78,6 +88,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201708111648355_Initial.resx">
       <DependentUpon>201708111648355_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708171600134_TagMigration.resx">
+      <DependentUpon>201708171600134_TagMigration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

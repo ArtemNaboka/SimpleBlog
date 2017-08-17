@@ -19,9 +19,9 @@ namespace Blog.Domain.Repositories.Base
             DbSet = dbContext.Set<TEntity>();
         }
 
-        public IDbSet<TEntity> DbSet { get; }
-        public IDbContext BlogDbContext { get; }
-        public virtual IQueryable<TEntity> NotCachedQueryable => DbSet.AsNoTracking();
+        protected IDbSet<TEntity> DbSet { get; }
+        protected IDbContext BlogDbContext { get; }
+        protected virtual IQueryable<TEntity> NotCachedQueryable => DbSet.AsNoTracking();
 
         public virtual async Task<IEnumerable<TEntity>> GetItemsAsync()
         {

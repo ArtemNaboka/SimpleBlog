@@ -15,6 +15,8 @@ namespace Blog.Business.Infrastructure.DI
             Bind<IArticlesRepository>().To<SqlArticlesRepository>();
             Bind<ICommentsRepository>().To<SqlCommentsRepository>();
             Bind<IQuestionaryAnswersRepository>().To<SqlQuestionaryAnswersRepository>();
+            Bind<ITagsRepository>().To<SqlTagsRepository>();
+            Bind<IArticleTagsRepository>().To<SqlArticleTagsRepository>();
         }
     }
 }

@@ -95,7 +95,10 @@ namespace Blog.WebUI.Controllers
                 return HttpNotFound();
             }
 
-            return View(Mapper.Map<ArticleModel, ArticleViewModel>(article));
+            var articleVm = Mapper.Map<ArticleModel, ArticleViewModel>(article);
+            articleVm.Tags = (await _articlesService.GetArticleTags(id.Value)).ToList();
+
+            return View(articleVm);
         }
 
         [HttpGet]
@@ -107,14 +110,14 @@ namespace Blog.WebUI.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create(ArticleViewModel article)
+        public async Task<ActionResult> Create(CreateArticleViewModel article)
         {
             if (ModelState.IsValid)
             {
                 article.Name = RemoveExtraSpaces(article.Name);
                 article.Text = RemoveExtraSpaces(article.Text);
                 article.PublishDate = DateTime.UtcNow;
-                await _articlesService.CreateAsync(Mapper.Map<ArticleViewModel, ArticleModel>(article));
+                await _articlesService.CreateAsync(Mapper.Map<CreateArticleViewModel, ArticleModel>(article));
                 return RedirectToAction("Index");
             }
 
@@ -135,18 +138,18 @@ namespace Blog.WebUI.Controllers
                 return HttpNotFound();
             }
 
-            return View(Mapper.Map<ArticleModel, ArticleViewModel>(article));
+            return View(Mapper.Map<ArticleModel, CreateArticleViewModel>(article));
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit(ArticleViewModel article)
+        public async Task<ActionResult> Edit(CreateArticleViewModel article)
         {
             if (ModelState.IsValid)
             {
                 article.Name = RemoveExtraSpaces(article.Name);
                 article.Text = RemoveExtraSpaces(article.Text);
-                await _articlesService.UpdateAsync(Mapper.Map<ArticleViewModel, ArticleModel>(article));
+                await _articlesService.UpdateAsync(Mapper.Map<CreateArticleViewModel, ArticleModel>(article));
                 return RedirectToAction("Index");
             }
 
@@ -167,7 +170,7 @@ namespace Blog.WebUI.Controllers
                 return HttpNotFound();
             }
 
-            return View(Mapper.Map<ArticleModel, ArticleViewModel>(article));
+            return View(Mapper.Map<ArticleModel, CreateArticleViewModel>(article));
         }
 
         [HttpPost, ActionName("Delete")]
