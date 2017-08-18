@@ -60,7 +60,10 @@
     <Compile Include="Entities\Base\BaseEntity.cs" />
     <Compile Include="Entities\Comment.cs" />
     <Compile Include="Entities\QuestionaryAnswer.cs" />
+    <Compile Include="Entities\Role.cs" />
     <Compile Include="Entities\Tag.cs" />
+    <Compile Include="Entities\User.cs" />
+    <Compile Include="Entities\UserRole.cs" />
     <Compile Include="Migrations\201708111648355_Initial.cs" />
     <Compile Include="Migrations\201708111648355_Initial.Designer.cs">
       <DependentUpon>201708111648355_Initial.cs</DependentUpon>
@@ -82,7 +85,9 @@
     <Compile Include="Repositories\SqlArticleTagsRepository.cs" />
     <Compile Include="Repositories\SqlCommentsRepository.cs" />
     <Compile Include="Repositories\SqlQuestionaryAnswersRepository.cs" />
+    <Compile Include="Repositories\SqlRoleStore.cs" />
     <Compile Include="Repositories\SqlTagsRepository.cs" />
+    <Compile Include="Repositories\SqlUserStore.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

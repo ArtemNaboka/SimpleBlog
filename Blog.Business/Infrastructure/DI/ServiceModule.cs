@@ -2,6 +2,7 @@
 using Blog.Domain.Contexts.Interfaces;
 using Blog.Domain.Repositories;
 using Blog.Domain.Repositories.Interfaces;
+using Microsoft.AspNet.Identity;
 using Ninject.Modules;
 using Ninject.Web.Common;
 
@@ -17,6 +18,8 @@ namespace Blog.Business.Infrastructure.DI
             Bind<IQuestionaryAnswersRepository>().To<SqlQuestionaryAnswersRepository>();
             Bind<ITagsRepository>().To<SqlTagsRepository>();
             Bind<IArticleTagsRepository>().To<SqlArticleTagsRepository>();
+            Bind(typeof(IUserStore<>)).To<SqlUserStore>();
+            Bind(typeof(IRoleStore<>)).To<SqlRoleStore>();
         }
     }
 }
