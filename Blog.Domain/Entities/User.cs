@@ -7,7 +7,8 @@ namespace Blog.Domain.Entities
     public class User : BaseEntity, IUser<int>
     {
         public string UserName { get; set; }
+        public string PasswordHash { get; set; }
 
-        public IList<UserRole> UserRole { get; set; }
+        public IList<UserRole> UserRoles { get; set; }
     }
 }

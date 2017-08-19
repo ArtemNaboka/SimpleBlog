@@ -1,5 +1,6 @@
 ﻿using Blog.Domain.Contexts;
 using Blog.Domain.Contexts.Interfaces;
+using Blog.Domain.Entities;
 using Blog.Domain.Repositories;
 using Blog.Domain.Repositories.Interfaces;
 using Microsoft.AspNet.Identity;
@@ -18,8 +19,8 @@ namespace Blog.Business.Infrastructure.DI
             Bind<IQuestionaryAnswersRepository>().To<SqlQuestionaryAnswersRepository>();
             Bind<ITagsRepository>().To<SqlTagsRepository>();
             Bind<IArticleTagsRepository>().To<SqlArticleTagsRepository>();
-            Bind(typeof(IUserStore<>)).To<SqlUserStore>();
-            Bind(typeof(IRoleStore<>)).To<SqlRoleStore>();
+            Bind<IUserStore<User, int>>().To<SqlUserStore>();
+            Bind<IRoleStore<Role, int>>().To<SqlRoleStore>();
         }
     }
 }

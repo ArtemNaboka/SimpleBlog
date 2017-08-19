@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Web.Mvc;
 using Blog.Business.Services;
 using Blog.Business.Services.Interfaces;
+using Blog.Domain.Entities;
+using Microsoft.AspNet.Identity;
 using Ninject;
 
 namespace Blog.WebUI.Util
@@ -33,6 +35,8 @@ namespace Blog.WebUI.Util
             _kernel.Bind<ICommentsService>().To<CommentsService>();
             _kernel.Bind<IQuestionaryAnswersService>().To<QuestionaryAnswersService>();
             _kernel.Bind<IVoteService>().To<VoteService>();
+            _kernel.Bind<UserManager<User, int>>().ToSelf();
+            _kernel.Bind<ISignInService>().To<SignInService>();
         }
     }
 }

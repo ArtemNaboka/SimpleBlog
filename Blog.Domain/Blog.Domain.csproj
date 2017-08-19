@@ -72,6 +72,14 @@
     <Compile Include="Migrations\201708171600134_TagMigration.Designer.cs">
       <DependentUpon>201708171600134_TagMigration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201708181510086_IdentityMigration.cs" />
+    <Compile Include="Migrations\201708181510086_IdentityMigration.Designer.cs">
+      <DependentUpon>201708181510086_IdentityMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708191147227_PasswordHashMigr.cs" />
+    <Compile Include="Migrations\201708191147227_PasswordHashMigr.Designer.cs">
+      <DependentUpon>201708191147227_PasswordHashMigr.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\Base\GenericRepositoryBase.cs" />
@@ -99,6 +107,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201708171600134_TagMigration.resx">
       <DependentUpon>201708171600134_TagMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708181510086_IdentityMigration.resx">
+      <DependentUpon>201708181510086_IdentityMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708191147227_PasswordHashMigr.resx">
+      <DependentUpon>201708191147227_PasswordHashMigr.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

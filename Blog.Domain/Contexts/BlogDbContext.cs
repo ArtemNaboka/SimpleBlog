@@ -19,6 +19,10 @@ namespace Blog.Domain.Contexts
         public IDbSet<Tag> Tags { get; set; }
         public IDbSet<ArticleTag> ArticleTags { get; set; }
 
+        public IDbSet<User> Users { get; set; }
+        public IDbSet<Role> Roles { get; set; }
+        public IDbSet<UserRole> UserRoles { get; set; }
+
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -29,6 +33,14 @@ namespace Blog.Domain.Contexts
             modelBuilder.Entity<ArticleTag>()
                 .HasRequired(at => at.Tag)
                 .WithMany(t => t.ArticleTags);
+
+            modelBuilder.Entity<UserRole>()
+                .HasRequired(ur => ur.User)
+                .WithMany(u => u.UserRoles);
+
+            modelBuilder.Entity<UserRole>()
+                .HasRequired(ur => ur.Role)
+                .WithMany(r => r.UserRoles);
         }
     }
 }

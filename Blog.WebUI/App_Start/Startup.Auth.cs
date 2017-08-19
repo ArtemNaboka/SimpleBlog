@@ -1,4 +1,14 @@
-﻿using Owin;
+﻿using System.Web.Mvc;
+using Blog.Business.Services;
+using Blog.Business.Services.Interfaces;
+using Blog.Domain.Contexts;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
+using Microsoft.Owin;
+using Microsoft.Owin.Security.Cookies;
+using Owin;
+using Blog.Domain.Entities;
+using Blog.Domain.Repositories;
 
 namespace Blog.WebUI
 {
@@ -6,21 +16,28 @@ namespace Blog.WebUI
     {
         public void ConfigureAuth(IAppBuilder app)
         {
+            app.CreatePerOwinContext<ISignInService>(IdentityFactory.CreateSignInService);
 
+            app.UseCookieAuthentication(new CookieAuthenticationOptions
+            {
+                AuthenticationType = DefaultAuthenticationTypes.ApplicationCookie,
+                LoginPath = new PathString("/Admin/Login"),
+                Provider = new CookieAuthenticationProvider
+                {
+                    //OnValidateIdentity = SecurityStampValidator.OnValidateIdentity<UserManager<User, int>, User, int>(
+                    //    validateInterval: TimeSpan.FromMinutes(30),
+                    //    regenerateIdentityCallback: (manager, user) => user.GenerateUserIdentityAsync(manager))
+                }
+            });
+        }
+    }
 
-            //app.UseCookieAuthentication(new CookieAuthenticationOptions
-            //{
-            //    AuthenticationType = DefaultAuthenticationTypes.ApplicationCookie,
-            //    LoginPath = new PathString("/Account/Login"),
-            //    Provider = new CookieAuthenticationProvider
-            //    {
-            //        // Позволяет приложению проверять метку безопасности при входе пользователя.
-            //        // Эта функция безопасности используется, когда вы меняете пароль или добавляете внешнее имя входа в свою учетную запись.  
-            //        OnValidateIdentity = SecurityStampValidator.OnValidateIdentity<ApplicationUserManager, ApplicationUser>(
-            //            validateInterval: TimeSpan.FromMinutes(30),
-            //            regenerateIdentity: (manager, user) => user.GenerateUserIdentityAsync(manager))
-            //    }
-            //});
+    public static class IdentityFactory
+    {
+        public static ISignInService CreateSignInService(IdentityFactoryOptions<ISignInService> options, IOwinContext context)
+        {
+            var userManager = DependencyResolver.Current.GetService<UserManager<User, int>>();
+            return new SignInService(userManager, context.Authentication);
         }
     }
 }
