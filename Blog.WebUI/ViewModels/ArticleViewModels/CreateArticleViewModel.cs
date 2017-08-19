@@ -18,8 +18,5 @@ namespace Blog.WebUI.ViewModels.ArticleViewModels
         [Required]
         [DataType(DataType.MultilineText)]
         public string Text { get; set; }
-
-        [DataType(DataType.MultilineText)]
-        public string Tags { get; set; }
     }
 }

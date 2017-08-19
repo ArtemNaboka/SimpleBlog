@@ -1,6 +1,24 @@
-﻿
+﻿@model IList<Blog.WebUI.ViewModels.ArticleViewModels.ArticleViewModel>
+
 @{
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Index";
 }
 
-<h2>title</h2>
+<h2>Articles</h2>
+
+<p>
+    @Html.ActionLink("Create New", "CreateArticle")
+</p>
+
+@if (Model.Any())
+{
+
+    foreach (var article in Model)
+    {
+        @Html.Partial("_ArticlePartial", article)
+    }
+}
+else
+{
+    <h3>There are no articles yet</h3>
+}

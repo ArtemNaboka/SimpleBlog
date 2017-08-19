@@ -237,6 +237,8 @@
     <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Admin\Views\Admin\Login.cshtml" />
     <Content Include="Areas\Admin\Views\Admin\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\_ArticlePartial.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\CreateArticle.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -299,7 +301,7 @@
       <Name>Blog.Business</Name>
     </ProjectReference>
     <ProjectReference Include="..\Blog.Domain\Blog.Domain.csproj">
-      <Project>{1AD158EB-BDC5-429A-9D67-D34D36330AFF}</Project>
+      <Project>{1ad158eb-bdc5-429a-9d67-d34d36330aff}</Project>
       <Name>Blog.Domain</Name>
     </ProjectReference>
   </ItemGroup>
