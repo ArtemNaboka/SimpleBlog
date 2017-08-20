@@ -33,7 +33,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.ChoosenTagsId, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.ListBoxFor(model => model.ChoosenTagsId, Model.Tags)
+                @Html.ListBoxFor(model => model.ChoosenTagsId, Model.Tags, new { id = "tags" })
             </div>
         </div>
 
@@ -48,3 +48,15 @@
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
+
+@section Scripts
+{
+    <link rel="stylesheet" href="~/Content/multiselect.css" />
+    <script src="~/Scripts/multiselect.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#tags').multiselect();
+        });
+    </script>
+}

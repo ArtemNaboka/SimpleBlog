@@ -220,6 +220,8 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\comments.css" />
+    <Content Include="Content\multiselect.css" />
+    <Content Include="Scripts\multiselect.js" />
     <Content Include="Content\questionary.css" />
     <Content Include="Content\vote.css" />
     <Content Include="favicon.ico" />
@@ -241,6 +243,7 @@
     <Content Include="Areas\Admin\Views\Admin\CreateArticle.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_LogoutPartial.cshtml" />
     <Content Include="Areas\Admin\Views\Admin\DeleteArticle.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\Details.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

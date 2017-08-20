@@ -150,6 +150,26 @@ namespace Blog.WebUI.Areas.Admin.Controllers
             return RedirectToAction("Index");
         }
 
+        [HttpGet]
+        public async Task<ActionResult> Details(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            var article = await _articlesService.GetArticleAsync(id.Value);
+
+            if (article == null)
+            {
+                return HttpNotFound();
+            }
+
+            var articleVm = Mapper.Map<ArticleModel, ArticleViewModel>(article);
+            articleVm.Tags = (await _articlesService.GetArticleTags(id.Value)).ToList();
+
+            return View(articleVm);
+        }
 
         #region Helpers
 
