@@ -35,6 +35,7 @@ namespace Blog.WebUI.Util
             _kernel.Bind<ICommentsService>().To<CommentsService>();
             _kernel.Bind<IQuestionaryAnswersService>().To<QuestionaryAnswersService>();
             _kernel.Bind<IVoteService>().To<VoteService>();
+            _kernel.Bind<ITagsService>().To<TagsService>();
             _kernel.Bind<UserManager<User, int>>().ToSelf();
             _kernel.Bind<ISignInService>().To<SignInService>();
         }

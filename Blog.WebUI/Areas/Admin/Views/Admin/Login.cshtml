@@ -1,7 +1,6 @@
 ﻿@model Blog.WebUI.ViewModels.AccountViewModels.LoginViewModel
 @{
     ViewBag.Title = "Login as admin";
-    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>@ViewBag.Title.</h2>
@@ -40,9 +39,11 @@
                         <input type="submit" value="Login" class="btn btn-default" />
                     </div>
                 </div>
+                @Html.ActionLink("Back to site", "Index", new { area = "", controller = "Articles" })
             }
         </section>
     </div>
+   
 </div>
 
 @section Scripts {

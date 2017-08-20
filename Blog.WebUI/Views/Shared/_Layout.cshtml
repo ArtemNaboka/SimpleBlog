@@ -20,14 +20,12 @@
         <div class="content-col main-body">
             @RenderBody()
         </div>
-        @if (!User.IsInRole("Admin"))
-        {
-            <div class="right-sidebar content-col">
-                @Html.Partial("_MenuPartial")
-                @RenderSection("Vote", false)
-            </div>
-            <div class="clearfix"></div>
-        }
+        <div class="right-sidebar content-col">
+            @Html.Partial("_MenuPartial")
+            @RenderSection("Vote", false)
+        </div>
+        <div class="clearfix"></div>
+
         <hr />
     </div>
     <footer>

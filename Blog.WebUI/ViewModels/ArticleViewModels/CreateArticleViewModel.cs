@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Web.Mvc;
+using Blog.Business.Models.DTO;
 
 namespace Blog.WebUI.ViewModels.ArticleViewModels
 {
@@ -18,5 +21,10 @@ namespace Blog.WebUI.ViewModels.ArticleViewModels
         [Required]
         [DataType(DataType.MultilineText)]
         public string Text { get; set; }
+
+        [Display(Name = "Tags")]
+        public IEnumerable<int> ChoosenTagsId { get; set; }
+
+        public IEnumerable<SelectListItem> Tags { get; set; }
     }
 }

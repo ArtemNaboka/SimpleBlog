@@ -8,5 +8,6 @@ namespace Blog.Business.Services.Interfaces
     {
         Task CreateAsync(TagModel tag);
         Task<IEnumerable<ArticleModel>> GetArticlesByTag(int tagId);
+        Task<IEnumerable<TagModel>> GetTags();
     }
 }

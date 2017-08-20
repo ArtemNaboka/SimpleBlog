@@ -1,6 +1,6 @@
 ﻿@model Blog.WebUI.ViewModels.ArticleViewModels.ArticleViewModel
 
-<div class="article">
+<div style="width: 100%;" class="article">
     <div class="article-header">
         <p class="article-name">@Html.ActionLink(Model.Name, "Details", new { id = Model.Id })</p>
         <p class="publish-date">@Model.PublishDate.ToString("d")</p>
@@ -9,7 +9,6 @@
         <p>@Model.Text</p>
     </div>
     <div>
-        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-        @Html.ActionLink("Delete", "Delete", new { id = Model.Id })
+        @Html.ActionLink("Delete", "DeleteArticle", new { id = Model.Id })
     </div>
 </div>

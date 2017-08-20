@@ -29,5 +29,11 @@ namespace Blog.Business.Services
             var articles = tag.ArticleTags.Select(at => at.Article);
             return Mapper.Map<IEnumerable<Article>, IEnumerable<ArticleModel>>(articles);
         }
+
+        public async Task<IEnumerable<TagModel>> GetTags()
+        {
+            var tags = await _tagsRepository.GetItemsAsync();
+            return Mapper.Map<IEnumerable<Tag>, IEnumerable<TagModel>>(tags);
+        }
     }
 }

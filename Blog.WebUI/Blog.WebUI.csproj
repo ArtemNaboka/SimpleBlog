@@ -239,6 +239,8 @@
     <Content Include="Areas\Admin\Views\Admin\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Admin\_ArticlePartial.cshtml" />
     <Content Include="Areas\Admin\Views\Admin\CreateArticle.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_LogoutPartial.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\DeleteArticle.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

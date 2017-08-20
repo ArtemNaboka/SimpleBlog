@@ -63,5 +63,29 @@ namespace Blog.Business.Services
                 .Select(at => at.Tag);
             return Mapper.Map<IEnumerable<Tag>, IEnumerable<TagModel>>(tags);
         }
+
+        public async Task AddTagToArticle(int articleId, int tagId)
+        {
+            await _articleTagsRepository.AddAsync(new ArticleTag
+            {
+                ArticleId = articleId,
+                TagId = tagId
+            });
+        }
+
+        public async Task AddTagsToArticle(int articleId, IEnumerable<int> tagsId)
+        {
+            foreach (var tagId in tagsId)
+            {
+                await AddTagToArticle(articleId, tagId);
+            }
+        }
+
+        public async Task CreateAsync(ArticleModel article, IEnumerable<int> tagsId)
+        {
+            var articleEntity = Mapper.Map<ArticleModel, Article>(article);
+            await _articlesRepository.AddAsync(articleEntity);
+            await AddTagsToArticle(articleEntity.Id, tagsId);
+        }
     }
 }

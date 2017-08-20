@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
@@ -18,16 +19,20 @@ namespace Blog.WebUI.Areas.Admin.Controllers
     [Authorize(Roles = "Admin")]
     public class AdminController : Controller
     {
+        private const int SymbolsForPreviewShow = 200;
+
         private readonly IArticlesService _articlesService;
+        private readonly ITagsService _tagsService;
         private ISignInService _signInService;
 
         protected ISignInService SignInService
             => _signInService ?? (_signInService = HttpContext.GetOwinContext().Get<ISignInService>());
 
 
-        public AdminController(IArticlesService articlesService)
+        public AdminController(IArticlesService articlesService, ITagsService tagsService)
         {
             _articlesService = articlesService;
+            _tagsService = tagsService;
         }
 
         public async Task<ActionResult> Index()
@@ -36,6 +41,14 @@ namespace Blog.WebUI.Areas.Admin.Controllers
                 Mapper.Map<IEnumerable<ArticleModel>, IEnumerable<ArticleViewModel>>
                 (await _articlesService.GetArticlesAsync())
                 .ToList();
+
+            foreach (var article in articleList)
+            {
+                if (article.Text.Length > SymbolsForPreviewShow)
+                {
+                    article.Text = article.Text.Substring(0, SymbolsForPreviewShow) + "...";
+                }
+            }
 
             return View(articleList);
         }
@@ -54,7 +67,7 @@ namespace Blog.WebUI.Areas.Admin.Controllers
 
         [HttpPost]
         [AllowAnonymous]
-        public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
+        public async Task<ActionResult> Login(LoginViewModel model)
         {
             if (!ModelState.IsValid)
             {
@@ -77,13 +90,19 @@ namespace Blog.WebUI.Areas.Admin.Controllers
         public ActionResult LogOff()
         {
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
-            return RedirectToAction("Index");
+            return RedirectToAction("Login");
         }
 
         [HttpGet]
-        public ActionResult CreateArticle()
+        public async Task<ActionResult> CreateArticle()
         {
-            return View();
+            var vm = new CreateArticleViewModel
+            {
+                Tags = (await _tagsService.GetTags())
+                    .Select(t => new SelectListItem { Value =  t.Id.ToString(), Text = t.Name })
+            };
+
+            return View(vm);
         }
 
 
@@ -96,13 +115,40 @@ namespace Blog.WebUI.Areas.Admin.Controllers
                 article.Name = RemoveExtraSpaces(article.Name);
                 article.Text = RemoveExtraSpaces(article.Text);
                 article.PublishDate = DateTime.UtcNow;
-                await _articlesService.CreateAsync(Mapper.Map<CreateArticleViewModel, ArticleModel>(article));
+                var articleModel = Mapper.Map<CreateArticleViewModel, ArticleModel>(article);
+                await _articlesService.CreateAsync(articleModel, article.ChoosenTagsId);
+
                 return RedirectToAction("Index");
             }
 
             return View(article);
         }
 
+
+        public async Task<ActionResult> DeleteArticle(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            var article = await _articlesService.GetArticleAsync(id.Value);
+
+            if (article == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(Mapper.Map<ArticleModel, CreateArticleViewModel>(article));
+        }
+
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> DeleteConfirmed(int id)
+        {
+            await _articlesService.RemoveAsync(id);
+            return RedirectToAction("Index");
+        }
 
 
         #region Helpers
