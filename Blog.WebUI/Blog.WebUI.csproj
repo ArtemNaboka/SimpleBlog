@@ -213,6 +213,7 @@
     <Compile Include="ViewModels\QuestionariesViewModels\InterestingsViewModel.cs" />
     <Compile Include="ViewModels\QuestionariesViewModels\QuestionaryResultsViewModel.cs" />
     <Compile Include="ViewModels\QuestionariesViewModels\QuestionaryViewModel.cs" />
+    <Compile Include="ViewModels\TagsViewModels\CreateTagsViewModel.cs" />
     <Compile Include="ViewModels\VoteViewModels\CreateVoiceViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -244,6 +245,7 @@
     <Content Include="Areas\Admin\Views\Shared\_LogoutPartial.cshtml" />
     <Content Include="Areas\Admin\Views\Admin\DeleteArticle.cshtml" />
     <Content Include="Areas\Admin\Views\Admin\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\CreateTags.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

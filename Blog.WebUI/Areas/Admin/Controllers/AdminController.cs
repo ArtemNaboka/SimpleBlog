@@ -10,6 +10,7 @@ using Blog.Business.Models.DTO;
 using Blog.Business.Services.Interfaces;
 using Blog.WebUI.ViewModels.AccountViewModels;
 using Blog.WebUI.ViewModels.ArticleViewModels;
+using Blog.WebUI.ViewModels.TagsViewModels;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
@@ -169,6 +170,30 @@ namespace Blog.WebUI.Areas.Admin.Controllers
             articleVm.Tags = (await _articlesService.GetArticleTags(id.Value)).ToList();
 
             return View(articleVm);
+        }
+
+        [HttpGet]
+        public ActionResult CreateTags()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> CreateTags(CreateTagsViewModel tagsViewModel)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(tagsViewModel);
+            }
+
+            var tags = tagsViewModel.AllTags.Trim().Split(new[] {','}, StringSplitOptions.RemoveEmptyEntries);
+            foreach (var tag in tags)
+            {
+                await _tagsService.CreateAsync(new TagModel { Name = tag.Trim() });
+            }
+
+            return RedirectToAction("Index");
         }
 
         #region Helpers

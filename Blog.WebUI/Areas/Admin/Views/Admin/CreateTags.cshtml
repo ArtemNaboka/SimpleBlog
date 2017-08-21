@@ -1,0 +1,33 @@
+﻿@model Blog.WebUI.ViewModels.TagsViewModels.CreateTagsViewModel
+
+@{
+    ViewBag.Title = "CreateTags";
+}
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Create tags</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.AllTags, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.AllTags, new { htmlAttributes = new { @class = "form-control", placeholder = "Separate tags with a comma. Ex. \"Wpf, Entity Framework, Asp.Net\" " } })
+                @Html.ValidationMessageFor(model => model.AllTags, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
