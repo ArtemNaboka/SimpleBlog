@@ -270,10 +270,7 @@
     <Content Include="Views\Shared\_MenuPartial.cshtml" />
     <Content Include="Views\Articles\_ArticlePartial.cshtml" />
     <Content Include="Views\Articles\Index.cshtml" />
-    <Content Include="Views\Articles\Edit.cshtml" />
     <Content Include="Views\Articles\Details.cshtml" />
-    <Content Include="Views\Articles\Delete.cshtml" />
-    <Content Include="Views\Articles\Create.cshtml" />
     <Content Include="Views\Comments\Index.cshtml" />
     <Content Include="Views\Comments\_CommentPartial.cshtml" />
     <Content Include="Views\Comments\_CreateCommentPartial.cshtml" />
