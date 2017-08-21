@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Web.Mvc;
 using Blog.Business.Services;
 using Blog.Business.Services.Interfaces;
 using Blog.Domain.Contexts;
@@ -24,9 +25,11 @@ namespace Blog.WebUI
                 LoginPath = new PathString("/Admin/Login"),
                 Provider = new CookieAuthenticationProvider
                 {
-                    //OnValidateIdentity = SecurityStampValidator.OnValidateIdentity<UserManager<User, int>, User, int>(
-                    //    validateInterval: TimeSpan.FromMinutes(30),
-                    //    regenerateIdentityCallback: (manager, user) => user.GenerateUserIdentityAsync(manager))
+                    OnValidateIdentity = SecurityStampValidator.OnValidateIdentity<UserManager<User, int>, User, int>(
+                        validateInterval: TimeSpan.FromMinutes(30),
+                        regenerateIdentityCallback: (manager, user) 
+                            => manager.CreateIdentityAsync(user, DefaultAuthenticationTypes.ApplicationCookie),
+                        getUserIdCallback: identity => identity.GetUserId<int>())
                 }
             });
         }
