@@ -28,19 +28,23 @@ namespace Blog.Domain.Contexts
         {
             modelBuilder.Entity<ArticleTag>()
                 .HasRequired(at => at.Article)
-                .WithMany(a => a.ArticleTags);
+                .WithMany(a => a.ArticleTags)
+                .WillCascadeOnDelete();
 
             modelBuilder.Entity<ArticleTag>()
                 .HasRequired(at => at.Tag)
-                .WithMany(t => t.ArticleTags);
+                .WithMany(t => t.ArticleTags)
+                .WillCascadeOnDelete();
 
             modelBuilder.Entity<UserRole>()
                 .HasRequired(ur => ur.User)
-                .WithMany(u => u.UserRoles);
+                .WithMany(u => u.UserRoles)
+                .WillCascadeOnDelete();
 
             modelBuilder.Entity<UserRole>()
                 .HasRequired(ur => ur.Role)
-                .WithMany(r => r.UserRoles);
+                .WithMany(r => r.UserRoles)
+                .WillCascadeOnDelete();
         }
     }
 }
